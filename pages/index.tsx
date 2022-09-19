@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "../components/Button";
+import { Navbar } from "../components/Navbar";
 import { Tabs } from "../components/Tabs";
 import { ME_IMAGE } from "../utils/assets";
 
@@ -13,52 +16,107 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <div className="max-w-3xl mx-auto mb-10">
-          <Navbar />
-          <div className="pt-40">
-            <div className="text-secondary">Hello there 👋 I'm</div>
-            <div className="text-name-gradient text-5xl">
+      <main className="mb-28">
+        <Navbar />
+        <div className="max-w-3xl mx-auto">
+          <div className="pt-60 h-screen">
+            <div className="text-secondary text-xl animate-fade-in-bottom animation-delay-100">Hello there 👋 I'm</div>
+            <div className="text-name-gradient text-6xl font-semibold animate-fade-in-bottom animation-delay-150">
               Sujitha Wijewantha
             </div>
-            <div className="text-2xl">I make stuff for the web</div>
-            <div className="text-base max-w-xl mt-2">
+            <div className="text-3xl animate-fade-in-bottom animation-delay-300">I make stuff for the web</div>
+            <div className="mt-2 text-xl animate-fade-in-bottom animation-delay-400">
               I’m a software engineer that specializes in building amazing
               products. Im currently focussed on creating amazing experiences
               with web3
             </div>
           </div>
           <AboutMe />
-          <div id="#experience">
-            <div className="text-3xl">Experience</div>
-            <div className="mt-4">
+          <div className="mt-10 animate-fade-in-bottom" id="experience">
+            <div className="text-3xl font-medium">Experience</div>
+            <div className="mt-8">
               <Tabs names={["Affno", "Enactor"]}>
-                <Tabs.Panel>1</Tabs.Panel>
-                <Tabs.Panel>2</Tabs.Panel>
+                <Tabs.Panel>
+                  <div>Software Engineering Intern 2019 -2020</div>
+                  <ul className="mt-4 list-disc list-outside pl-5">
+                    <li>
+                      Worked as a part of the web and solutions based team
+                    </li>
+                    <li>
+                      Performed development work with industry standards and
+                      best practices in mind
+                    </li>
+                    <li>
+                      Gained knowledge in the Web, Mobile and Server-side
+                      development by working on different frameworks such as
+                      Ionic, Laravel, Express
+                    </li>
+                    <li>
+                      Worked on multiple projects in areas such as Frontend
+                      Integration and Implementation (REST API, HTML, CSS)
+                    </li>
+                    <li>
+                      Created multiple chatbots for a better customer experience
+                      in websites
+                    </li>
+                  </ul>
+                </Tabs.Panel>
+                <Tabs.Panel>
+                  <div>Software Engineer 2021 - Current</div>
+                  <ul className="mt-4 list-disc list-outside pl-5">
+                    <li>
+                      Migrating existing features in legacy POS to the Enactors
+                      ReactPOS
+                    </li>
+                    <li>Added new data preprocessors for the platform</li>
+                    <li>
+                      Contributed in helping streamlining the styling system
+                      used in the ReactPos
+                    </li>
+                    <li>Automation for existing features for the React POS</li>
+                  </ul>
+                </Tabs.Panel>
               </Tabs>
             </div>
           </div>
-          <div id="#my-work">
-            <div className="text-3xl mt-4">My Work</div>
+          <div className="mt-10" id="my-work">
+            <div className="text-3xl font-medium">My Work</div>
             <div className="grid grid-cols-3 gap-4 mt-4">
               <div className="bg-gray-100 h-48"></div>
               <div className="bg-gray-100 h-48"></div>
               <div className="bg-gray-100 h-48"></div>
             </div>
           </div>
+          <div className="pt-10" id="contact-me">
+            <div className="text-4xl font-medium text-center">
+              Interested in working with me
+            </div>
+            <div className="text-center max-w-[400px] mx-auto mt-5 text-secondary">
+              Do you have a cool idea, want to hire me for an interesting
+              project or just have a question my inbox is open below :)
+            </div>
+            <div className="flex justify-center mt-4">
+              <a href="mailto:sujithawijewantha@gmail.com">
+                <Button>Ping me 📥</Button>
+              </a>
+            </div>
+          </div>
         </div>
       </main>
-
-      <footer></footer>
+      <footer className="my-10">
+        <div className="text-secondary text-center">
+          Designed and developed by Sujitha Wijewantha
+        </div>
+      </footer>
     </div>
   );
 };
 
 const AboutMe = () => (
-  <div className="mt-40" id="#about-me">
-    <div className="flex justify-between">
+  <div id="about-me">
+    <h2 className="text-3xl font-medium">About Me</h2>
+    <div className="flex justify-between pt-10">
       <div className="max-w-lg">
-        <h2 className="text-3xl">About Me</h2>
         <div className="mt-5">
           Hi there, I'm a passionate software engineer with a variety of skills
           from mobile development to web development. I’m a great team player as
@@ -66,31 +124,9 @@ const AboutMe = () => (
           situations as well as the ability to grow myself and others.
         </div>
       </div>
-      <div className="rounded-full h-48 w-48 overflow-clip flex justify-center">
+      <div className="rounded-full h-52 w-52 overflow-clip flex justify-center">
         <Image objectFit="cover" src={ME_IMAGE} alt="head image" />
       </div>
-    </div>
-  </div>
-);
-
-const Navbar = () => (
-  <div className="flex justify-between">
-    <div className="flex gap-5">
-      <span>
-        <a href="#about-me"> About Me </a>
-      </span>
-      <span>
-        <a href="#experience"> Experience </a>
-      </span>
-      <span>
-        <a href="#my-work"> My Work </a>
-      </span>
-      <span>
-        <a href="#contact-me"> Contact Me </a>
-      </span>
-    </div>
-    <div>
-      <button>Resume</button>
     </div>
   </div>
 );

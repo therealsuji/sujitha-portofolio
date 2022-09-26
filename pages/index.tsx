@@ -9,9 +9,11 @@ import {
   CARBON_PLANTER_SC,
   DOWN_ICON,
   HIGHT_TABLE_SC,
+  INBOX_IMAGE,
   LINK_ICON,
   ME_IMAGE,
   PLAYHQ_SC,
+  WAVE_IMAGE,
 } from "../utils/assets";
 
 const Home: NextPage = () => {
@@ -110,7 +112,7 @@ const Home: NextPage = () => {
               data-aos="fade-up"
               className="text-secondary text-xl"
             >
-              Hello there 👋 I'm
+              Hello there <Image width="20" height="20" src={WAVE_IMAGE} alt="👋" /> {"I'm"}
             </div>
             <div
               data-aos="fade-up"
@@ -147,11 +149,11 @@ const Home: NextPage = () => {
             <div className="flex justify-between pt-10">
               <div className="max-w-lg">
                 <div className="mt-5">
-                  Hi there, I'm a passionate software engineer with a variety of
-                  skills from mobile development to web development. I’m a great
-                  team player as well as a driven individual that has the
-                  ability to adapt to situations as well as the ability to grow
-                  myself and others.
+                  Hi there, {"I'm"} a passionate software engineer with a
+                  variety of skills from mobile development to web development.{" "}
+                  {"I’m"} a great team player as well as a driven individual
+                  that has the ability to adapt to situations as well as the
+                  ability to grow myself and others.
                 </div>
               </div>
               <div className="rounded-full h-52 w-52 overflow-clip flex justify-center">
@@ -217,7 +219,9 @@ const Home: NextPage = () => {
             className="mt-10"
             id="my-work"
           >
-            <div className="text-3xl font-medium">Cool Stuff I've Built</div>
+            <div className="text-3xl font-medium">
+              Cool Stuff {"I've"} Built
+            </div>
             <div className="mt-10 space-y-10">
               <WorkCard
                 title="High Table Society"
@@ -259,7 +263,7 @@ const Home: NextPage = () => {
             </div>
             <div className="flex justify-center mt-4">
               <a href="mailto:sujithawijewantha@gmail.com">
-                <Button>Ping me 📥</Button>
+                <Button className="flex items-center gap-2">Ping me <Image width="20" height="20" src={INBOX_IMAGE} alt="📥" /></Button>
               </a>
             </div>
           </div>

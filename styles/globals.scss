@@ -11,7 +11,13 @@
   text-fill-color: transparent;
 }
 
-
+html{
+  scroll-behavior: smooth;
+}
 body{
  @apply bg-background text-white;
+}
+
+.filter-gray-color{
+  filter: invert(44%) sepia(0%) saturate(22%) hue-rotate(138deg) brightness(93%) contrast(86%);
 }

@@ -25,7 +25,10 @@ export const Navbar = () => {
   });
 
   return (
-    <div className={`${styles.navbar} ${visible ? "top-0" : "-top-40"}`}>
+    <div
+      data-aos="fade-up"
+      className={`${styles.navbar} ${visible ? "top-0" : "-top-40"}`}
+    >
       <div className="flex justify-between max-w-3xl mx-auto items-center">
         <div className="flex gap-5">
           <span>
@@ -42,7 +45,9 @@ export const Navbar = () => {
           </span>
         </div>
         <div>
-          <Button className="p-2">Resume</Button>
+          <a href="mycv.pdf" target="_blank" rel="noopener noreferrer">
+            <Button className="p-2">Resume</Button>
+          </a>
         </div>
       </div>
     </div>

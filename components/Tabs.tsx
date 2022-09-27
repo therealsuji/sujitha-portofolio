@@ -29,7 +29,7 @@ export const Tabs: FCC<TabsProps> & {
               </Tab>
             ))}
           </div>
-          <div className="relative">
+          <div className="relative mt-4">
             <div
               style={{ minWidth: `${tabLength}px`, left: position * tabLength }}
               className="rounded-md rounded-bl-none rounded-br-none  h-1 bg-slate-100 absolute -bottom-[1px] transition-all duration-100 ease-in-out"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
+import { Button } from "./Button";
 
 const navigation = [
   { name: "About Me", href: "#about-me" },
@@ -73,20 +74,29 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="hidden sm:ml-6 sm:block">
-                    <div className="flex space-x-4">
-                      {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={
-                            "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                          aria-current="page"
-                        >
-                          {item.name}
-                        </a>
-                      ))}
+                  <div className="hidden sm:ml-6 sm:block w-full">
+                    <div className="flex justify-between">
+                      <div className="flex space-x-4">
+                        {navigation.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={
+                              "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                            }
+                            aria-current="page"
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                      </div>
+                      <a
+                        href="mycv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button className="p-2">Resume</Button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -95,9 +105,9 @@ export default function Navbar() {
             <Transition
               enter="transition-all overflow-hidden duration-200 ease-out"
               enterFrom="h-0 opacity-0"
-              enterTo="h-48 opacity-100"
+              enterTo="h-60 opacity-100"
               leave="transition-all overflow-hidden duration-200 ease-out"
-              leaveFrom="h-48 opacity-100"
+              leaveFrom="h-60 opacity-100"
               leaveTo="h-0 opacity-0"
             >
               <Disclosure.Panel className="sm:hidden">
@@ -113,6 +123,9 @@ export default function Navbar() {
                       {item.name}
                     </Disclosure.Button>
                   ))}
+                  <a href="mycv.pdf" target="_blank" rel="noopener noreferrer">
+                    <Button className="p-2 mt-3">Resume</Button>
+                  </a>
                 </div>
               </Disclosure.Panel>
             </Transition>

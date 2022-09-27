@@ -168,7 +168,7 @@ const Home: NextPage = () => {
             className="mt-10"
             id="experience"
           >
-            <div className="text-3xl font-medium">Experience</div>
+            <div className="text-3xl font-medium  pt-20">Experience</div>
             <div className="mt-8">
               <Tabs names={["Affno", "Enactor"]}>
                 <Tabs.Panel>
@@ -220,7 +220,7 @@ const Home: NextPage = () => {
             className="mt-10"
             id="my-work"
           >
-            <div className="text-3xl font-medium">
+            <div className="text-3xl font-medium  pt-20">
               Cool Stuff {"I've"} Built
             </div>
             <div className="mt-10 space-y-10">

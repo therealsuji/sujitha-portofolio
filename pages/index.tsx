@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../components/Button";
-import { Navbar } from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import { Tabs } from "../components/Tabs";
 import {
   CARBON_PLANTER_SC,
@@ -105,14 +105,15 @@ const Home: NextPage = () => {
 
       <main className="mb-28">
         <Navbar />
-        <div className="max-w-3xl mx-auto parent">
+        <div className="container">
           <div className="pt-60 h-screen flex flex-col">
             <div
               data-aos-delay="50"
               data-aos="fade-up"
-              className="text-secondary text-xl"
+              className="flex gap-2 items-center text-secondary text-xl"
             >
-              Hello there <Image width="20" height="20" src={WAVE_IMAGE} alt="👋" /> {"I'm"}
+              Hello there{" "}
+              <Image width="20" height="20" src={WAVE_IMAGE} alt="👋" /> {"I'm"}
             </div>
             <div
               data-aos="fade-up"
@@ -146,7 +147,7 @@ const Home: NextPage = () => {
           </div>
           <div data-aos="fade-up" data-aos-delay="100" id="about-me">
             <h2 className="text-3xl font-medium pt-20">About Me</h2>
-            <div className="flex justify-between pt-10">
+            <div className="flex justify-between pt-10 md:flex-row flex-col items-center md:items-start gap-10">
               <div className="max-w-lg">
                 <div className="mt-5">
                   Hi there, {"I'm"} a passionate software engineer with a
@@ -156,7 +157,7 @@ const Home: NextPage = () => {
                   ability to grow myself and others.
                 </div>
               </div>
-              <div className="rounded-full h-52 w-52 overflow-clip flex justify-center">
+              <div className="rounded-md h-52 w-52 overflow-clip flex justify-center">
                 <Image objectFit="cover" src={ME_IMAGE} alt="head image" />
               </div>
             </div>
@@ -263,7 +264,10 @@ const Home: NextPage = () => {
             </div>
             <div className="flex justify-center mt-4">
               <a href="mailto:sujithawijewantha@gmail.com">
-                <Button className="flex items-center gap-2">Ping me <Image width="20" height="20" src={INBOX_IMAGE} alt="📥" /></Button>
+                <Button className="flex items-center gap-2">
+                  Ping me{" "}
+                  <Image width="20" height="20" src={INBOX_IMAGE} alt="📥" />
+                </Button>
               </a>
             </div>
           </div>
@@ -296,15 +300,21 @@ export const WorkCard: React.FC<WorkCard> = ({
 }) => {
   return (
     <div
-      className={`flex items-center relative ${
-        position === "RIGHT" ? "flex-row-reverse" : ""
+      className={`flex items-center relative flex-col ${
+        position === "RIGHT" ? "md:flex-row-reverse" : "md:flex-row"
       }`}
     >
-      <div className="">
-        <Image src={image} alt="" />
+      <div className="brightness-[0.4] hover:brightness-100 transition-all rounded-md overflow-hidden max-h-64 max-w-md">
+        {link ? (
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            <Image src={image} alt="" />
+          </a>
+        ) : (
+          <Image src={image} alt="" />
+        )}
       </div>
       <div
-        className={`absolute bg-secondary-black rounded-md px-4 py-5 h-fit w-2/4 ${
+        className={`md:absolute bg-secondary-black rounded-md px-4 py-5 h-fit md:w-2/4 ${
           position === "RIGHT" ? "left-0" : "right-0"
         }`}
       >

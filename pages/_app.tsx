@@ -11,8 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       once: true,
       offset: 50,
     });
+    if (typeof window !== "undefined") {
+      const loader = document.getElementById("globalLoader");
+      if (loader) loader.remove();
+    }
   }, []);
-
   return <Component {...pageProps} />;
 }
 

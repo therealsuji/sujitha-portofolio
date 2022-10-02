@@ -130,8 +130,8 @@ const Home: NextPage = () => {
               data-aos="fade-up"
               className="mt-2 text-xl"
             >
-              I’m a software engineer that specializes in building amazing
-              products. Im currently focussed on creating amazing experiences
+              {"I'm "}a software engineer that specializes in building amazing
+              products. {"I'm"} currently focussed on creating amazing experiences
               with web3
             </div>
             <div
@@ -149,12 +149,36 @@ const Home: NextPage = () => {
             <h2 className="text-3xl font-medium pt-20">About Me</h2>
             <div className="flex justify-between pt-10 md:flex-row flex-col items-center md:items-start gap-10">
               <div className="max-w-lg">
+                <div>
+                  Hi there, {"I'm"} Sujitha. Creative engineer that loves making
+                  amazing experiences in the web. I started my engineering
+                  journey from game development when i was school. After playing
+                  around with Unity and Unreal Engine i fell in love with
+                  software engineering. In university i explored designing and
+                  developing mobile apps using flutter and making web apps using
+                  Angular. When i wanted to complete the app experience thats
+                  when i wanted to get into backend development as well. Today
+                  right now {"I'm"} focussed on building experiences with Web3
+                  after experimenting with Anchor on Solana.
+                </div>
                 <div className="mt-5">
-                  Hi there, {"I'm"} a passionate software engineer with a
-                  variety of skills from mobile development to web development.{" "}
-                  {"I’m"} a great team player as well as a driven individual
-                  that has the ability to adapt to situations as well as the
-                  ability to grow myself and others.
+                  Here are a few technologies and tools that I have worked with
+                </div>
+                <div>
+                  <ul className="grid grid-cols-4 list-outside mt-5 arrow-list">
+                    <ol>React</ol>
+                    <ol>Angular</ol>
+                    <ol>Tailwind</ol>
+                    <ol>Anchor</ol>
+                    <ol>Solana</ol>
+                    <ol>NestJS</ol>
+                    <ol>Flutter</ol>
+                    <ol>Postgres</ol>
+                    <ol>Cloud Build</ol>
+                    <ol>Github Actions</ol>
+                    <ol>Railway</ol>
+                    <ol>GCP App Engine</ol>
+                  </ul>
                 </div>
               </div>
               <div className="rounded-md h-52 w-52 overflow-clip flex justify-center">
@@ -170,7 +194,22 @@ const Home: NextPage = () => {
           >
             <div className="text-3xl font-medium  pt-20">Experience</div>
             <div className="mt-8">
-              <Tabs names={["Affno", "Enactor"]}>
+              <Tabs names={["Enactor", "Affno"]}>
+                <Tabs.Panel>
+                  <div>Software Engineer 2021 - Current</div>
+                  <ul className="mt-4 list-disc list-outside pl-5">
+                    <li>
+                      Migrating existing features in legacy POS to the Enactors
+                      ReactPOS
+                    </li>
+                    <li>Added new data preprocessors for the platform</li>
+                    <li>
+                      Contributed in helping streamlining the styling system
+                      used in the ReactPos
+                    </li>
+                    <li>Automation for existing features for the React POS</li>
+                  </ul>
+                </Tabs.Panel>
                 <Tabs.Panel>
                   <div>Software Engineering Intern 2019 -2020</div>
                   <ul className="mt-4 list-disc list-outside pl-5">
@@ -194,21 +233,6 @@ const Home: NextPage = () => {
                       Created multiple chatbots for a better customer experience
                       in websites
                     </li>
-                  </ul>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <div>Software Engineer 2021 - Current</div>
-                  <ul className="mt-4 list-disc list-outside pl-5">
-                    <li>
-                      Migrating existing features in legacy POS to the Enactors
-                      ReactPOS
-                    </li>
-                    <li>Added new data preprocessors for the platform</li>
-                    <li>
-                      Contributed in helping streamlining the styling system
-                      used in the ReactPos
-                    </li>
-                    <li>Automation for existing features for the React POS</li>
                   </ul>
                 </Tabs.Panel>
               </Tabs>
@@ -262,12 +286,20 @@ const Home: NextPage = () => {
               Do you have a cool idea, want to hire me for an interesting
               project my inbox is open below :)
             </div>
-            <div className="flex justify-center mt-4">
+            <div className="flex items-center mt-4 flex-col gap-4">
               <a href="mailto:sujithawijewantha@gmail.com">
                 <Button className="flex items-center gap-2">
                   Ping me{" "}
                   <Image width="20" height="20" src={INBOX_IMAGE} alt="📥" />
                 </Button>
+              </a>
+              <a
+                className="md:hidden"
+                href="mycv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="px-8 py-4 w-full">Resume</Button>
               </a>
             </div>
           </div>
@@ -275,7 +307,7 @@ const Home: NextPage = () => {
       </main>
       <footer className="my-10">
         <div className="text-secondary text-center">
-          Designed and developed by Sujitha Wijewantha
+          Designed and developed By Sujitha Wijewantha
         </div>
       </footer>
     </div>

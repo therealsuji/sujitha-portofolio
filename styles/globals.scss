@@ -40,3 +40,21 @@ body {
 .container {
   @apply max-w-3xl sm:max-w-4xl md:mx-auto px-10;
 }
+
+.arrow-list {
+  ol {
+    display: flex;
+    padding-left: 14px;
+    position: relative;
+  }
+  :before {
+    content: "";
+    position: absolute;
+    border: solid #ff9a9e;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    left: 0;
+    transform: rotate(-45deg);
+    top: 8px;
+  }
+}

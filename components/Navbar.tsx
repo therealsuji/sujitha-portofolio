@@ -74,7 +74,7 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="hidden sm:ml-6 sm:block w-full">
+                  <div className="hidden sm:mx-6 sm:block w-full">
                     <div className="flex justify-between">
                       <div className="flex space-x-4">
                         {navigation.map((item) => (
@@ -123,9 +123,6 @@ export default function Navbar() {
                       {item.name}
                     </Disclosure.Button>
                   ))}
-                  <a href="mycv.pdf" target="_blank" rel="noopener noreferrer">
-                    <Button className="p-2 mt-3">Resume</Button>
-                  </a>
                 </div>
               </Disclosure.Panel>
             </Transition>

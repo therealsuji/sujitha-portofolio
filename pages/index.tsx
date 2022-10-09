@@ -131,8 +131,8 @@ const Home: NextPage = () => {
               className="mt-2 text-xl"
             >
               {"I'm "}a software engineer that specializes in building amazing
-              products. {"I'm"} currently focussed on creating amazing experiences
-              with web3
+              products. {"I'm"} currently focussed on creating amazing
+              experiences with web3
             </div>
             <div
               className="w-full flex justify-center mt-auto mb-10 cursor-pointer"
@@ -147,43 +147,60 @@ const Home: NextPage = () => {
           </div>
           <div data-aos="fade-up" data-aos-delay="100" id="about-me">
             <h2 className="text-3xl font-medium pt-20">About Me</h2>
-            <div className="flex justify-between pt-10 md:flex-row flex-col items-center md:items-start gap-10">
-              <div className="max-w-lg">
-                <div>
-                  Hi there, {"I'm"} Sujitha. Creative engineer that loves making
-                  amazing experiences in the web. I started my engineering
-                  journey from game development when i was school. After playing
-                  around with Unity and Unreal Engine i fell in love with
-                  software engineering. In university i explored designing and
-                  developing mobile apps using flutter and making web apps using
-                  Angular. When i wanted to complete the app experience thats
-                  when i wanted to get into backend development as well. Today
-                  right now {"I'm"} focussed on building experiences with Web3
-                  after experimenting with Anchor on Solana.
+            <div>
+              <div className="flex justify-between pt-10 md:flex-row flex-col items-center md:items-start gap-10">
+                <div className="max-w-lg">
+                  <div>
+                    Hi there, {"I'm"} Sujitha. Creative engineer that loves
+                    making amazing experiences in the web. I started my
+                    engineering journey from game development when i was school.
+                    After playing around with Unity and Unreal Engine i fell in
+                    love with software engineering. In university i explored
+                    designing and developing mobile apps using flutter and
+                    making web apps using Angular. When i wanted to complete the
+                    app experience thats when i wanted to get into backend
+                    development as well. Today right now {"I'm"} focussed on
+                    building experiences with Web3 after experimenting with
+                    Anchor on Solana.
+                  </div>
                 </div>
-                <div className="mt-5">
-                  Here are a few technologies and tools that I have worked with
-                </div>
-                <div>
-                  <ul className="grid grid-cols-4 list-outside mt-5 arrow-list">
-                    <ol>React</ol>
-                    <ol>Angular</ol>
-                    <ol>Tailwind</ol>
-                    <ol>Anchor</ol>
-                    <ol>Solana</ol>
-                    <ol>NestJS</ol>
-                    <ol>Flutter</ol>
-                    <ol>Postgres</ol>
-                    <ol>Cloud Build</ol>
-                    <ol>Github Actions</ol>
-                    <ol>Railway</ol>
-                    <ol>GCP App Engine</ol>
-                  </ul>
+                <div className="rounded-md h-52 w-52 overflow-clip flex justify-center">
+                  <Image objectFit="cover" src={ME_IMAGE} alt="head image" />
                 </div>
               </div>
-              <div className="rounded-md h-52 w-52 overflow-clip flex justify-center">
-                <Image objectFit="cover" src={ME_IMAGE} alt="head image" />
-              </div>
+              <div className="mt-5 font-medium">
+                    Here are a few technologies and tools that I have worked
+                    with
+                  </div>
+                  <div className="flex flex-col gap-4 mt-4">
+                    <div>
+                      <div className="font-bold">Frontend</div>
+                      <ul className="grid grid-cols-4 list-outside arrow-list">
+                        <ol>React</ol>
+                        <ol>Angular</ol>
+                        <ol>Tailwind</ol>
+                        <ol>Flutter</ol>
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="font-bold">Backend</div>
+                      <ul className="grid grid-cols-4 list-outside arrow-list">
+                        <ol>Anchor</ol>
+                        <ol>Solana</ol>
+                        <ol>NestJS</ol>
+                        <ol>Postgres</ol>
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="font-bold">Infrastructure</div>
+                      <ul className="grid grid-cols-4 list-outside arrow-list">
+                        <ol>Cloud Build</ol>
+                        <ol>Github Actions</ol>
+                        <ol>Railway</ol>
+                        <ol>GCP App Engine</ol>
+                      </ul>
+                    </div>
+                  </div>
             </div>
           </div>
           <div
@@ -211,7 +228,7 @@ const Home: NextPage = () => {
                   </ul>
                 </Tabs.Panel>
                 <Tabs.Panel>
-                  <div>Software Engineering Intern 2019 -2020</div>
+                  <div>Junior Software Engineer 2019 -2020</div>
                   <ul className="mt-4 list-disc list-outside pl-5">
                     <li>
                       Worked as a part of the web and solutions based team

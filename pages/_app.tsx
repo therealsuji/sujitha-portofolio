@@ -1,6 +1,7 @@
 import "../styles/globals.scss";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Analytics } from '@vercel/analytics/react';
 
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
@@ -16,7 +17,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (loader) loader.remove();
     }
   }, []);
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  );
 }
 
 export default MyApp;

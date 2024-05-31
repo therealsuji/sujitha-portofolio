@@ -1,7 +1,4 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import Image, { StaticImageData } from "next/image";
-import { useEffect, useRef, useState } from "react";
 import { Button } from "../components/Button";
 import Navbar from "../components/Navbar";
 import { Tabs } from "../components/Tabs";
@@ -15,8 +12,8 @@ import {
   PLAYHQ_SC,
   WAVE_IMAGE,
 } from "../utils/assets";
-
-const Home: NextPage = () => {
+import Head from "next/head";
+const Home = () => {
   const scrollToAboutMe = () => {
     console.log("scroll");
 
@@ -27,82 +24,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Sujitha Wijewantha</title>
-        <meta name="description" content="Sujitha Wijewantha" />
-        <link
-          rel="apple-touch-icon"
-          sizes="57x57"
-          href="/apple-icon-57x57.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="60x60"
-          href="/apple-icon-60x60.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="72x72"
-          href="/apple-icon-72x72.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/apple-icon-76x76.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="114x114"
-          href="/apple-icon-114x114.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/apple-icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="144x144"
-          href="/apple-icon-144x144.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/apple-icon-152x152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-icon-180x180.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/android-icon-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/favicon-96x96.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-        <meta name="theme-color" content="#ffffff"></meta>
       </Head>
-
       <main className="mb-28">
         <Navbar />
         <div className="container">
@@ -131,14 +53,15 @@ const Home: NextPage = () => {
               className="mt-2 text-xl"
             >
               {"I'm "}a software engineer that specializes in building amazing
-              products. {"I'm"} currently focussed on creating amazing
-              experiences with web3
+              products.
             </div>
             <div
               className="w-full flex justify-center mt-auto mb-10 cursor-pointer"
               onClick={scrollToAboutMe}
             >
               <Image
+                width={30}
+                height={30}
                 className="animate-bounce filter-gray-color "
                 src={DOWN_ICON}
                 alt="Click Me"
@@ -159,48 +82,36 @@ const Home: NextPage = () => {
                     designing and developing mobile apps using flutter and
                     making web apps using Angular. When i wanted to complete the
                     app experience thats when i wanted to get into backend
-                    development as well. Today right now {"I'm"} focussed on
-                    building experiences with Web3 after experimenting with
-                    Anchor on Solana.
+                    development as well.
                   </div>
                 </div>
-                <div className="rounded-md h-52 w-52 overflow-clip flex justify-center">
-                  <Image objectFit="cover" src={ME_IMAGE} alt="head image" />
+                <div className="rounded-md h-52 w-52 overflow-clip flex justify-center relative">
+                  <Image
+                    layout="fill"
+                    objectFit="cover"
+                    src={ME_IMAGE}
+                    alt="head image"
+                  />
                 </div>
               </div>
               <div className="mt-5 font-medium">
-                    Here are a few technologies and tools that I have worked
-                    with
-                  </div>
-                  <div className="flex flex-col gap-4 mt-4">
-                    <div>
-                      <div className="font-bold">Frontend</div>
-                      <ul className="grid grid-cols-4 list-outside arrow-list">
-                        <ol>React</ol>
-                        <ol>Angular</ol>
-                        <ol>Tailwind</ol>
-                        <ol>Flutter</ol>
-                      </ul>
-                    </div>
-                    <div>
-                      <div className="font-bold">Backend</div>
-                      <ul className="grid grid-cols-4 list-outside arrow-list">
-                        <ol>Anchor</ol>
-                        <ol>Solana</ol>
-                        <ol>NestJS</ol>
-                        <ol>Postgres</ol>
-                      </ul>
-                    </div>
-                    <div>
-                      <div className="font-bold">Infrastructure</div>
-                      <ul className="grid grid-cols-4 list-outside arrow-list">
-                        <ol>Cloud Build</ol>
-                        <ol>Github Actions</ol>
-                        <ol>Railway</ol>
-                        <ol>GCP App Engine</ol>
-                      </ul>
-                    </div>
-                  </div>
+                Here are a few technologies and tools that I love to work with:
+              </div>
+              <div className="flex flex-col gap-4 mt-4">
+                <div>
+                  <ul className="grid grid-cols-4 list-outside arrow-list">
+                    <ol>React</ol>
+                    <ol>Angular</ol>
+                    <ol>Tailwind</ol>
+                    <ol>NestJS</ol>
+                    <ol>Flutter</ol>
+                    <ol>S3</ol>
+                    <ol>GCP App Engine</ol>
+                    <ol>Railway ( I ❤️ Railway)</ol>
+                    <ol>Flutter</ol>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -264,31 +175,7 @@ const Home: NextPage = () => {
             <div className="text-3xl font-medium  pt-20">
               Cool Stuff {"I've"} Built
             </div>
-            <div className="mt-10 space-y-10">
-              <WorkCard
-                title="High Table Society"
-                description="An interactive story powered by web3 that changes its narrative based on the communities decisions"
-                image={HIGHT_TABLE_SC}
-                link="https://hightablesociety.com"
-                position="LEFT"
-                stack="React | Tailwind | Anchor"
-              />
-              <WorkCard
-                description="A platform that aims on making events carbon neutral by gifting atenddees digital trees"
-                image={CARBON_PLANTER_SC}
-                link="https://app.carbonplanter.com/"
-                position="RIGHT"
-                stack="React | Tailwind"
-                title="Carbon Planter"
-              />
-              <WorkCard
-                title="PlayHQ"
-                description="Platform that focuses on connecting gamers to discover  and trade games easily"
-                image={PLAYHQ_SC}
-                position="LEFT"
-                stack="Flutter | NestJS | Railway | Firebase"
-              />
-            </div>
+            <div className="mt-10 space-y-10"></div>
           </div>
           <div
             data-aos="fade-up"
@@ -353,13 +240,13 @@ export const WorkCard: React.FC<WorkCard> = ({
         position === "RIGHT" ? "md:flex-row-reverse" : "md:flex-row"
       }`}
     >
-      <div className="brightness-[0.4] hover:brightness-100 transition-all rounded-md overflow-hidden max-h-64 max-w-md">
+      <div className="brightness-[0.4] hover:brightness-100 transition-all rounded-md overflow-hidden max-h-64 max-w-md w-40 relative">
         {link ? (
           <a href={link} target="_blank" rel="noopener noreferrer">
-            <Image src={image} alt="" />
+            <Image layout="fill" src={image} alt="" />
           </a>
         ) : (
-          <Image src={image} alt="" />
+          <Image layout="fill" src={image} alt="" />
         )}
       </div>
       <div

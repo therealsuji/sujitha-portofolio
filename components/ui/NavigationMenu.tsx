@@ -1,16 +1,8 @@
 "use client";
 import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { cva } from "class-variance-authority";
 import { ChevronDown } from "lucide-react";
-import { cn } from "../utils/helper";
-
-const navigation = [
-  { name: "About Me", href: "#about-me" },
-  { name: "Experience", href: "#experience" },
-  { name: "My Work", href: "#my-work" },
-  { name: "Contact Me", href: "#contact-me" },
-];
+import { cn } from "@/utils/helper";
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,

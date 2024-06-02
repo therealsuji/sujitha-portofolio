@@ -5,7 +5,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "../../components/NavigationMenu";
+} from "@/components/ui/NavigationMenu";
 import Link from "next/link";
 import { ThemeToggle } from "../../components/ThemeToggle";
 

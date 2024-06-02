@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../components/Button";
+import { Button } from "@/components/ui/Button";
 import Image, { StaticImageData } from "next/image";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/Tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/Tabs";
 import { WAVE_IMAGE, ME_IMAGE, INBOX_IMAGE, LINK_ICON } from "../utils/assets";
 import AboutMe from "./components/AboutMe";
 import Navbar from "./components/Navbar";

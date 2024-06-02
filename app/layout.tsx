@@ -2,6 +2,7 @@ import "../styles/globals.scss";
 import React from "react";
 import { FCC } from "../utils/types";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { Toaster } from "@/components/ui/Toast";
 
 const RootLayout: FCC = ({ children }) => {
   return (
@@ -91,6 +92,7 @@ const RootLayout: FCC = ({ children }) => {
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -3,6 +3,12 @@
 import { z } from "zod";
 import { actionClient } from "@/lib/safe-action";
 import { zfd } from "zod-form-data";
+import { db } from "@/lib/db";
+import { eq } from "drizzle-orm";
+import { user } from "@/lib/schema";
+import { verify } from "@node-rs/argon2";
+import { lucia } from "@/lib/auth";
+import { cookies } from "next/headers";
 
 const schema = z.object({
   email: z.string().min(2),
@@ -12,15 +18,35 @@ const schema = z.object({
 const formSchema = zfd.formData(schema);
 
 export const loginUser = actionClient
-   .schema(formSchema)
+  .schema(formSchema)
   .stateAction(async ({ parsedInput: { email, password } }) => {
-    if (email === "johndoe@gmail.com" && password === "123456") {
+    const existingUser = await db.query.user.findFirst({
+      where: eq(user.email, email),
+    });
+
+    if (!existingUser) {
       return {
-        success: "Successfully logged in",
+        error: "Invalid email or password",
       };
     }
 
+    const validPassword = await verify(existingUser.hashedPassword, password, {
+      memoryCost: 19456,
+      timeCost: 2,
+      outputLen: 32,
+      parallelism: 1,
+    });
+
+    if (!validPassword) {
+      return {
+        error: "Invalid email or password",
+      };
+    }
+
+    const session = await lucia.createSession(existingUser.id, {});
+    const sessionCookie = lucia.createSessionCookie(session.id);
+    cookies().set(sessionCookie.name, sessionCookie.value);
     return {
-      error: "Invalid email or password",
+      success: "Successfully logged in",
     };
   });

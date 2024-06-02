@@ -10,7 +10,7 @@
     "lint": "next lint",
     "studio": "drizzle-kit studio --port 42069 --verbose",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "bun run ./lib/migrate.ts",
+    "db:migrate": "bun run ./scripts/migrate.ts",
     "db:reset": "drizzle-kit drop"
   },
   "dependencies": {

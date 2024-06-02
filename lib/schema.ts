@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { pgTableCreator, text, timestamp } from "drizzle-orm/pg-core";
 
 const pgTable = pgTableCreator((name) => `sujitha_${name}`);
@@ -27,18 +27,25 @@ export const posts = pgTable("posts", {
   content: text("content").notNull(),
 });
 
-export const userTable = pgTable("user", {
+export const user = pgTable("user", {
   id: text("id").primaryKey(),
   hashedPassword: text("hashed_password").notNull(),
   email: text("email").notNull(),
 });
 
-export const sessionTable = pgTable("session", {
+export const session = pgTable("session", {
   id: text("id").primaryKey(),
   userId: text("user_id")
     .notNull()
-    .references(() => userTable.id),
+    .references(() => user.id),
   expiresAt: timestamp("expires_at").notNull(),
 });
+
+export const userSessionRelation = relations(session, ({ one }) => ({
+  user: one(user, {
+    fields: [session.userId],
+    references: [user.id],
+  }),
+}));
 
 export type Post = typeof posts.$inferSelect;

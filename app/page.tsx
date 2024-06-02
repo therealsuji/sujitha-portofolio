@@ -1,74 +1,38 @@
-import Image, { StaticImageData } from "next/image";
+import React from "react";
 import { Button } from "../components/Button";
-import Navbar from "../components/Navbar";
-import { Tabs } from "../components/Tabs";
-import {
-  CARBON_PLANTER_SC,
-  DOWN_ICON,
-  HIGHT_TABLE_SC,
-  INBOX_IMAGE,
-  LINK_ICON,
-  ME_IMAGE,
-  PLAYHQ_SC,
-  WAVE_IMAGE,
-} from "../utils/assets";
-import Head from "next/head";
-const Home = () => {
-  const scrollToAboutMe = () => {
-    console.log("scroll");
+import Image, { StaticImageData } from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/Tabs";
+import { WAVE_IMAGE, ME_IMAGE, INBOX_IMAGE, LINK_ICON } from "../utils/assets";
+import AboutMe from "./components/AboutMe";
+import Navbar from "./components/Navbar";
+import { Metadata } from "next";
 
-    document.querySelector("#about-me")?.scrollIntoView();
-  };
+export const metadata: Metadata = {
+  title: "Sujitha Wijewantha",
+};
 
+const Index = () => {
   return (
-    <div>
-      <Head>
-        <title>Sujitha Wijewantha</title>
-      </Head>
+    <>
       <main className="mb-28">
         <Navbar />
         <div className="container">
           <div className="pt-60 h-screen flex flex-col">
-            <div
-              data-aos-delay="50"
-              data-aos="fade-up"
-              className="flex gap-2 items-center text-secondary text-xl"
-            >
+            <div className="flex gap-2 items-center text-xl">
               Hello there{" "}
               <Image width="20" height="20" src={WAVE_IMAGE} alt="👋" /> {"I'm"}
             </div>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="text-name-gradient text-6xl font-semibold  "
-            >
+            <div className="text-name-gradient text-6xl font-semibold  ">
               Sujitha Wijewantha
             </div>
-            <div data-aos-delay="150" data-aos="fade-up" className="text-3xl  ">
-              I make stuff for the web
-            </div>
-            <div
-              data-aos-delay="200"
-              data-aos="fade-up"
-              className="mt-2 text-xl"
-            >
+            <div className="text-3xl  ">I make stuff for the web</div>
+            <div className="mt-2 text-xl">
               {"I'm "}a software engineer that specializes in building amazing
               products.
             </div>
-            <div
-              className="w-full flex justify-center mt-auto mb-10 cursor-pointer"
-              onClick={scrollToAboutMe}
-            >
-              <Image
-                width={30}
-                height={30}
-                className="animate-bounce filter-gray-color "
-                src={DOWN_ICON}
-                alt="Click Me"
-              />
-            </div>
+            <AboutMe />
           </div>
-          <div data-aos="fade-up" data-aos-delay="100" id="about-me">
+          <div id="about-me">
             <h2 className="text-3xl font-medium pt-20">About Me</h2>
             <div>
               <div className="flex justify-between pt-10 md:flex-row flex-col items-center md:items-start gap-10">
@@ -101,52 +65,74 @@ const Home = () => {
                 <div>
                   <ul className="grid grid-cols-4 list-outside arrow-list">
                     <ol>React</ol>
-                    <ol>Angular</ol>
+                    <ol>NextJS</ol>
                     <ol>Tailwind</ol>
                     <ol>NestJS</ol>
+                    <ol>Angular</ol>
                     <ol>Flutter</ol>
-                    <ol>S3</ol>
+                    <ol>Elastic Bean Stalk</ol>
+                    <ol>S3, GCP buckets</ol>
                     <ol>GCP App Engine</ol>
-                    <ol>Railway ( I ❤️ Railway)</ol>
-                    <ol>Flutter</ol>
+                    <ol>Railway (❤️)</ol>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            data-aos-delay="150"
-            className="mt-10"
-            id="experience"
-          >
+          <div className="mt-10" id="experience">
             <div className="text-3xl font-medium  pt-20">Experience</div>
             <div className="mt-8">
-              <Tabs names={["Enactor", "Affno"]}>
-                <Tabs.Panel>
+              <Tabs defaultValue="freeLancer">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="freeLancer">Free Lancing</TabsTrigger>
+                  <TabsTrigger value="enactor">Enactor</TabsTrigger>
+                  <TabsTrigger value="Affno">Affno</TabsTrigger>
+                </TabsList>
+                <TabsContent value="freeLancer">
+                  <ul className="mt-4 list-disc list-outside pl-5">
+                    <li>
+                      Created a multi-tenant website for a Taxi Service
+                      <ul className="list-disc list-outside pl-5">
+                        <li>
+                          Application uses NextJs for the FrontEnd and NestJs
+                          for the backend
+                        </li>
+                        <li>Hosted on AWS EBS</li>
+                        <li>CI-CD using codepipeline</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Multiple NextJS based BackOffice applications and RestApis
+                      for various clients
+                      <ul className="list-disc list-outside pl-5">
+                        <li>Hosted on Railway</li>
+                        <li>OpenAPI exposed using TRPC OpenAPI</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </TabsContent>
+                <TabsContent value="enactor">
                   <div>Software Engineer 2021 - Current</div>
                   <ul className="mt-4 list-disc list-outside pl-5">
                     <li>
                       Migrating existing features in legacy POS to the Enactors
-                      ReactPOS
+                      new ReactPOS
                     </li>
-                    <li>Added new data preprocessors for the platform</li>
+                    <li>
+                      Upgrading new data preprocessors for the platform pos
+                    </li>
                     <li>
                       Contributed in helping streamlining the styling system
                       used in the ReactPos
                     </li>
                     <li>Automation for existing features for the React POS</li>
                   </ul>
-                </Tabs.Panel>
-                <Tabs.Panel>
+                </TabsContent>
+                <TabsContent value="Affno">
                   <div>Junior Software Engineer 2019 -2020</div>
                   <ul className="mt-4 list-disc list-outside pl-5">
                     <li>
                       Worked as a part of the web and solutions based team
-                    </li>
-                    <li>
-                      Performed development work with industry standards and
-                      best practices in mind
                     </li>
                     <li>
                       Gained knowledge in the Web, Mobile and Server-side
@@ -154,39 +140,31 @@ const Home = () => {
                       Ionic, Laravel, Express
                     </li>
                     <li>
+                      Worked on creating a diary and event management app using
+                      Ionic and Angular
+                    </li>
+                    <li>
+                      Created a uber eats like mobile client using Ionic and
+                      Angular
+                    </li>
+                    <li>
                       Worked on multiple projects in areas such as Frontend
                       Integration and Implementation (REST API, HTML, CSS)
                     </li>
                     <li>
-                      Created multiple chatbots for a better customer experience
-                      in websites
+                      Created multiple chatbots using dialogFlow for a better
+                      customer experience for multiple banking websites
                     </li>
                   </ul>
-                </Tabs.Panel>
+                </TabsContent>
               </Tabs>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            data-aos-delay="200"
-            className="mt-10"
-            id="my-work"
-          >
-            <div className="text-3xl font-medium  pt-20">
-              Cool Stuff {"I've"} Built
-            </div>
-            <div className="mt-10 space-y-10"></div>
-          </div>
-          <div
-            data-aos="fade-up"
-            data-aos-delay="200"
-            className="pt-40"
-            id="contact-me"
-          >
+          <div className="pt-40" id="contact-me">
             <div className="text-4xl font-medium text-center">
               Interested in working with me
             </div>
-            <div className="text-center max-w-[400px] mx-auto mt-5 text-secondary">
+            <div className="text-center max-w-[400px] mx-auto mt-5">
               Do you have a cool idea, want to hire me for an interesting
               project my inbox is open below :)
             </div>
@@ -210,11 +188,11 @@ const Home = () => {
         </div>
       </main>
       <footer className="my-10">
-        <div className="text-secondary text-center">
+        <div className="text-center">
           Designed and developed By Sujitha Wijewantha
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
@@ -271,4 +249,4 @@ export const WorkCard: React.FC<WorkCard> = ({
   );
 };
 
-export default Home;
+export default Index;

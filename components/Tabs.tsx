@@ -1,56 +1,54 @@
-import { Tab } from "@headlessui/react";
-import React, { useState } from "react";
-import { FCC } from "../utils/types";
+"use client";
 
-interface TabsProps {
-  names: String[];
-}
+import * as React from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cn } from "../utils/helper";
 
-export const Tabs: FCC<TabsProps> & {
-  Panel: FCC;
-} = ({ children, names }) => {
-  const panels = React.Children.map(children, (child: any) =>
-    child?.type?.displayName === "Panel" ? child : null
-  );
-  const tabLength = 100;
-  const [position, setPosition] = useState(0);
-  return (
-    <Tab.Group onChange={setPosition}>
-      <div className="max-w-fit">
-        <Tab.List>
-          <div className="flex max-w-fit">
-            {names.map((value, idx) => (
-              <Tab
-                className="ring-0 outline-none"
-                style={{ minWidth: `${tabLength}px` }}
-                key={idx}
-              >
-                {value}
-              </Tab>
-            ))}
-          </div>
-          <div className="relative mt-4">
-            <div
-              style={{ minWidth: `${tabLength}px`, left: position * tabLength }}
-              className="rounded-md rounded-bl-none rounded-br-none  h-1 bg-slate-100 absolute -bottom-[1px] transition-all duration-100 ease-in-out"
-            ></div>
-            <div className="rounded-md h-[2px] bg-slate-100 absolute w-full z-40"></div>
-          </div>
-        </Tab.List>
-      </div>
-      <Tab.Panels className="bg-secondary-black p-8 rounded-md" >
-        {panels?.map((value, idx) => (
-          <Tab.Panel key={idx}>{value}</Tab.Panel>
-        ))}
-      </Tab.Panels>
-    </Tab.Group>
-  );
-};
+const Tabs = TabsPrimitive.Root;
 
-const Slot1: FCC = ({ children }): JSX.Element => {
-  return <div>{children}</div>;
-};
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    className={cn(
+      "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground",
+      className
+    )}
+    {...props}
+  />
+));
+TabsList.displayName = TabsPrimitive.List.displayName;
 
-const SlotPanel = Slot1;
-SlotPanel.displayName = "Panel";
-Tabs.Panel = SlotPanel;
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
+      className
+    )}
+    {...props}
+  />
+));
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Content
+    ref={ref}
+    className={cn(
+      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      className
+    )}
+    {...props}
+  />
+));
+TabsContent.displayName = TabsPrimitive.Content.displayName;
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };

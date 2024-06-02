@@ -15,8 +15,10 @@ import { loginUser } from "./login-action";
 import { useStateAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
 import { getFirstZodError } from "@/lib/action-utils";
+import { useRouter } from "next/navigation";
 
 function Login() {
+  const router = useRouter();
   const { execute } = useStateAction(loginUser, {
     onError: (e) => {
       const error = getFirstZodError(e.error.validationErrors);
@@ -29,6 +31,7 @@ function Login() {
         toast.error(data.data.error);
       } else {
         toast.success(data.data.success);
+        router.push("/new");
       }
     },
   });

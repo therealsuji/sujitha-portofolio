@@ -1,3 +1,5 @@
+"use server";
+
 import { cookies } from "next/headers";
 import { lucia } from "./auth";
 import { cache } from "react";

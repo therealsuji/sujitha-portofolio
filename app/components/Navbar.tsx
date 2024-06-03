@@ -27,6 +27,13 @@ const Navbar = () => {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/mycv.pdf" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle}>
+              Resume
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         <ThemeToggle />
       </NavigationMenuList>
     </NavigationMenu>

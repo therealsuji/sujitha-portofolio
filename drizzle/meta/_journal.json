@@ -15,6 +15,13 @@
       "when": 1717330713698,
       "tag": "0001_striped_jetstream",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1717341678229,
+      "tag": "0002_careless_puppet_master",
+      "breakpoints": true
     }
   ]
 }

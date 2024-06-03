@@ -1,5 +1,5 @@
 import { relations, sql } from "drizzle-orm";
-import { pgTableCreator, text, timestamp } from "drizzle-orm/pg-core";
+import { boolean, pgTableCreator, text, timestamp } from "drizzle-orm/pg-core";
 
 const pgTable = pgTableCreator((name) => `sujitha_${name}`);
 
@@ -24,6 +24,8 @@ const commonColumns = {
 export const posts = pgTable("posts", {
   ...commonColumns,
   title: text("title").notNull(),
+  thumbnail: text("thumbnail"),
+  published: boolean("published").default(false),
   content: text("content").notNull(),
 });
 

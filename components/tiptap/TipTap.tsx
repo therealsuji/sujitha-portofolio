@@ -48,6 +48,7 @@ type TiptapProps = {
   withEmojiSuggestion?: boolean;
   withEmojisReplacer?: boolean;
   withHexColorsDecorator?: boolean;
+  onUpdate?: (content: string) => void;
 };
 
 function Tiptap({
@@ -62,6 +63,7 @@ function Tiptap({
   withTaskListExtension = false,
   withPlaceholderExtension = false,
   withHexColorsDecorator = false,
+  onUpdate,
 }: TiptapProps) {
   const extensions: Extensions = [
     StarterKit.configure({
@@ -150,6 +152,9 @@ function Tiptap({
     editable,
     onUpdate: ({ editor }) => {
       setEditorHtmlContent(editor.getHTML());
+      if (onUpdate) {
+        onUpdate(editor.getHTML());
+      }
     },
   });
 
@@ -162,7 +167,7 @@ function Tiptap({
       <div className="WhiteCard">
         {withToolbar ? <Toolbar editor={editor} /> : null}
         {withPopover ? <Popover editor={editor} /> : null}
-        <EditorContent editor={editor} />
+        <EditorContent className="prose dark:prose-invert" editor={editor} />
       </div>
       <hr />
       <h2>HTML Output</h2>

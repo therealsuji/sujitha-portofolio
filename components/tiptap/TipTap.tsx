@@ -31,7 +31,7 @@ import { formatHtml } from "./helpers";
 import { Toolbar } from "./Toolbar";
 import { Popover } from "./Popover";
 
-import "./Tiptap.scss";
+import "./TipTap.scss";
 import "./HyperMultiMedia.scss";
 
 type TiptapProps = {

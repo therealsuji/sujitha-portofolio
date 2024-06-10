@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import {
@@ -11,6 +11,8 @@ import { ME_IMAGE, INBOX_IMAGE, LINK_ICON } from "../utils/assets";
 import AboutMe from "./components/AboutMe";
 import Navbar from "./components/Navbar";
 import { Metadata } from "next";
+import PostList from "./PostList";
+import Spinner from "./components/Spinner";
 
 export const metadata: Metadata = {
   title: "Sujitha Wijewantha",
@@ -152,6 +154,18 @@ const Index = () => {
                 </TabsContent>
               </Tabs>
             </div>
+          </div>
+          <div className="mt-10" id="cool-stuff">
+            <div className="text-3xl font-medium  pt-20">Cool Stuff</div>
+            <Suspense
+              fallback={
+                <div className="mt-2">
+                  <Spinner />
+                </div>
+              }
+            >
+              <PostList />
+            </Suspense>
           </div>
           <div className="pt-40" id="contact-me">
             <div className="text-4xl font-medium text-center">

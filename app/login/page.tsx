@@ -21,17 +21,19 @@ function Login() {
   const router = useRouter();
   const { execute } = useStateAction(loginUser, {
     onError: (e) => {
-      const error = getFirstZodError(e.error.validationErrors);
-      if (error) {
-        toast.error(error);
+      if ("serverError" in e.error) {
+        toast.error(e.error.serverError);
+      } else {
+        const error = getFirstZodError(e.error.validationErrors);
+        if (error) {
+          toast.error(error);
+        }
       }
     },
     onSuccess: (data) => {
-      if (data.data.error) {
-        toast.error(data.data.error);
-      } else {
+      if (data.data.success) {
         toast.success(data.data.success);
-        router.push("/new");
+        router.push("/blog/new");
       }
     },
   });

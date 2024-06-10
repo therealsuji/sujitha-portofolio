@@ -1,0 +1,1 @@
+ALTER TABLE "sujitha_posts" ADD COLUMN "slug" text DEFAULT gen_random_uuid() NOT NULL;

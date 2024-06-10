@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,32 +9,46 @@ import {
 } from "@/components/ui/NavigationMenu";
 import Link from "next/link";
 import { ThemeToggle } from "../../components/ThemeToggle";
+import { usePathname } from "next/navigation";
+
+type NavigationItemProps = {
+  href: string;
+  label: string;
+  active?: boolean;
+};
+
+const NavigationItem = ({ href, label, active }: NavigationItemProps) => (
+  <NavigationMenuItem>
+    <Link href={href} legacyBehavior passHref>
+      <NavigationMenuLink
+        active={active}
+        className={navigationMenuTriggerStyle}
+      >
+        {label}
+      </NavigationMenuLink>
+    </Link>
+  </NavigationMenuItem>
+);
 
 const Navbar = () => {
+  const path = usePathname();
+  const navItems = [
+    { href: "#about-me", label: "About Me" },
+    { href: "#contact-me", label: "Contact Me" },
+    { href: "#cool-stuff", label: "Cool Stuff" },
+    { href: "/mycv.pdf", label: "Resume" },
+  ];
+
   return (
     <NavigationMenu className="ml-auto mt-4 mr-4">
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link href="#about-me" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle}>
-              About Me
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="#contact-me" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle}>
-              Contact Me
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/mycv.pdf" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle}>
-              Resume
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+        {navItems.map((item) => (
+          <NavigationItem
+            key={item.href}
+            {...item}
+            active={path === item.href}
+          />
+        ))}
         <ThemeToggle />
       </NavigationMenuList>
     </NavigationMenu>

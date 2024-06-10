@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { actionClient } from "@/lib/safe-action";
+import { baseClient } from "@/lib/safe-action";
 import { zfd } from "zod-form-data";
 import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
@@ -17,7 +17,7 @@ const schema = z.object({
 
 const formSchema = zfd.formData(schema);
 
-export const loginUser = actionClient
+export const loginUser = baseClient
   .schema(formSchema)
   .stateAction(async ({ parsedInput: { email, password } }) => {
     const existingUser = await db.query.user.findFirst({
@@ -25,9 +25,7 @@ export const loginUser = actionClient
     });
 
     if (!existingUser) {
-      return {
-        error: "Invalid email or password",
-      };
+      throw new Error("Invalid email or password");
     }
 
     const validPassword = await verify(existingUser.hashedPassword, password, {
@@ -38,9 +36,7 @@ export const loginUser = actionClient
     });
 
     if (!validPassword) {
-      return {
-        error: "Invalid email or password",
-      };
+      throw new Error("Invalid email or password");
     }
 
     const session = await lucia.createSession(existingUser.id, {});

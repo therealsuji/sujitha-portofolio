@@ -32,6 +32,8 @@ import { Toolbar } from "./Toolbar";
 import { Popover } from "./Popover";
 
 import "./TipTap.scss";
+// import "highlight.js/styles/github-dark.min.css";
+
 import "./HyperMultiMedia.scss";
 
 type TiptapProps = {
@@ -167,12 +169,7 @@ function Tiptap({
       <div className="WhiteCard">
         {withToolbar ? <Toolbar editor={editor} /> : null}
         {withPopover ? <Popover editor={editor} /> : null}
-        <EditorContent className="prose dark:prose-invert" editor={editor} />
-      </div>
-      <hr />
-      <h2>HTML Output</h2>
-      <div className="WhiteCard">
-        <pre>{formatHtml(editorHtmlContent)}</pre>
+        <EditorContent className="prose dark:prose-invert mx-auto my-8" editor={editor} />
       </div>
     </>
   );

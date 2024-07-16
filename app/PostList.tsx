@@ -3,7 +3,7 @@ import React from "react";
 import { format } from "date-fns";
 import Link from "next/link";
 const PostList = async () => {
-  const posts = await listPosts({});
+  const posts = await listPosts();
   return (
     <div className="mt-8 gap-2 flex flex-col">
       {posts.data?.map((post) => (

@@ -1,9 +1,24 @@
-import React from "react";
- import { getPost } from "@/actions/post-actions";
+import React, { cache } from "react";
+import { cacheablePost } from "@/actions/post-actions";
 import PostPreview from "@/components/PostPreview";
- 
-const ViewPost = async ({ params }: { params: { "slug": string } }) => {
-  const { data } = await getPost({ slug: params["slug"] });
+import { Metadata } from "next";
+
+const cachedPost = cache(cacheablePost);
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const data = await cachedPost(params.slug);
+
+  return {
+    title: `Sujitha | ${data?.title ?? ""}`,
+  };
+}
+
+const ViewPost = async ({ params }: { params: { slug: string } }) => {
+  const data = await cachedPost(params["slug"]);
 
   let formattedContent = data?.content;
 

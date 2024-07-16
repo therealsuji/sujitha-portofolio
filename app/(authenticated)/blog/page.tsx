@@ -6,7 +6,7 @@ import { EyeIcon, PenIcon } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const PostList = async () => {
-  const posts = await listPosts();
+  const posts = await listPosts({});
 
   if (!posts.data) {
     return <div>no posts</div>;

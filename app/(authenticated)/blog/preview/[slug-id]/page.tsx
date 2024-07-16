@@ -1,7 +1,7 @@
 import React from "react";
 import { getPost } from "../../post-actions";
 import PostPreview from "@/components/PostPreview";
- 
+
 const PreviewPost = async ({ params }: { params: { "slug-id": string } }) => {
   const { data } = await getPost({ id: params["slug-id"] });
 

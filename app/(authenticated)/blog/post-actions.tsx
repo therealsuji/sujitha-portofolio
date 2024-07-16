@@ -74,6 +74,18 @@ export const listPosts = authClient.action(async ({ ctx }) => {
   return existingPosts;
 });
 
+export const isSlugAvailable = authClient
+  .schema(z.object({ slug: z.string() }))
+  .action(async ({ parsedInput, ctx }) => {
+    const { db } = ctx;
+    const { slug } = parsedInput;
+    const existingPost = await db.query.posts.findFirst({
+      where: eq(posts.slug, slug),
+    });
+
+    return !existingPost;
+  });
+
 export const updatePostTitle = authClient
   .schema(z.object({ id: z.string(), title: z.string() }))
   .action(async ({ parsedInput, ctx }) => {

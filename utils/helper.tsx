@@ -1,10 +1,14 @@
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
+import slugify from "slugify";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 export function createSlug(title: string) {
-  return title.toLowerCase().replace(/\s/g, "-");
+  const slug = slugify(title, {
+    lower: true,
+  });
+  return slug;
 }

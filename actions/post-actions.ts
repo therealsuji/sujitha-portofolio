@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/lib/db";
 import { baseClient } from "@/lib/safe-action";
 import { posts } from "@/lib/schema";
@@ -19,3 +21,11 @@ export const getPost = baseClient
 
     return post;
   });
+
+export const cacheablePost = async (slug: string) => {
+  const post = await db.query.posts.findFirst({
+    where: eq(posts.slug, slug),
+  });
+
+  return post;
+};

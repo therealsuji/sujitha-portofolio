@@ -14,7 +14,8 @@ export const listPosts = baseClient.action(async ({ ctx }) => {
       slug: posts.slug,
       createdAt: posts.createdAt,
     })
-    .from(posts);
+    .from(posts)
+    .where(eq(posts.published, true));
   return existingPosts;
 });
 

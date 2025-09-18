@@ -37,17 +37,20 @@ const NewPost = () => {
     // Call your execute function here with the form data
   };
   return (
-    <div className="max-w-2xl mx-4 my-4">
+    <div className="max-w-2xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-6">Create New Post</h1>
       <form
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-6"
         onSubmit={(e) => {
           e.preventDefault();
           execute(new FormData(e.currentTarget));
         }}
       >
-        <Label>Title</Label>
-        <Input name="title" placeholder="Title" />
-        <Button size={"sm"} type="submit" className="w-full">
+        <div className="space-y-2">
+          <Label htmlFor="title">Title</Label>
+          <Input id="title" name="title" placeholder="Enter post title" />
+        </div>
+        <Button size={"default"} type="submit" className="w-full">
           Create Post
         </Button>
       </form>

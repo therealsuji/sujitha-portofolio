@@ -8,16 +8,21 @@ import {
   isSlugAvailable,
   updatePostContent,
   updatePostTitle,
+  togglePostPublished,
 } from "../post-actions";
 import { Post } from "@/lib/schema";
 import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 import { toast } from "sonner";
+import { Globe, GlobeLock } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type ClientEditorProps = {
   post: Post;
 };
 
 const ClientEditor = ({ post }: ClientEditorProps) => {
+  const router = useRouter();
   const [updatedContent, setUpdatedContent] = useState(post.content);
   const [updatedTitle, setUpdatedTitle] = useState(post.title);
 
@@ -26,6 +31,19 @@ const ClientEditor = ({ post }: ClientEditorProps) => {
   const { execute: executeContent } = useAction(updatePostContent);
   const { executeAsync: executeSlugAvailable } = useAction(isSlugAvailable);
   const { execute: executeTitle } = useAction(updatePostTitle);
+  const { execute: executeToggle, isExecuting: isToggling } = useAction(togglePostPublished, {
+    onSuccess: (data) => {
+      toast.success(data.data ? "Post published" : "Post unpublished");
+      router.refresh();
+    },
+    onError: () => {
+      toast.error("Failed to toggle publish status");
+    }
+  });
+
+  const handleTogglePublished = () => {
+    executeToggle({ id: post.id });
+  };
 
   useEffect(() => {
     if (debouncedContent != post.content) {
@@ -52,23 +70,43 @@ const ClientEditor = ({ post }: ClientEditorProps) => {
   }, [debouncedTitle, executeTitle, post.id, post.title]);
 
   return (
-    <div>
-      <Input
-        value={updatedTitle}
-        onChange={(e) => setUpdatedTitle(e.target.value)}
-      />
-      <Tiptap
-        content={post.content}
-        withToolbar={true}
-        withTaskListExtension={true}
-        withLinkExtension={true}
-        withCodeBlockLowlightExtension={true}
-        withEmojiSuggestion={true}
-        withTypographyExtension={true}
-        withHexColorsDecorator={true}
-        withEmojisReplacer={true}
-        onUpdate={setUpdatedContent}
-      />
+    <div className="space-y-6">
+      <div className="flex gap-4 items-end">
+        <div className="flex-1 space-y-2">
+          <label className="text-sm font-medium">Title</label>
+          <Input
+            value={updatedTitle}
+            onChange={(e) => setUpdatedTitle(e.target.value)}
+            placeholder="Enter post title"
+          />
+        </div>
+        <Button
+          onClick={handleTogglePublished}
+          disabled={isToggling}
+          variant={post.published ? "default" : "outline"}
+          className="flex items-center gap-2"
+        >
+          {post.published ? <Globe className="h-4 w-4" /> : <GlobeLock className="h-4 w-4" />}
+          {post.published ? "Published" : "Unpublished"}
+        </Button>
+      </div>
+      <div className="space-y-2">
+        <label className="text-sm font-medium">Content</label>
+        <div className="border rounded-lg overflow-hidden">
+          <Tiptap
+            content={post.content}
+            withToolbar={true}
+            withTaskListExtension={true}
+            withLinkExtension={true}
+            withCodeBlockLowlightExtension={true}
+            withEmojiSuggestion={true}
+            withTypographyExtension={true}
+            withHexColorsDecorator={true}
+            withEmojisReplacer={true}
+            onUpdate={setUpdatedContent}
+          />
+        </div>
+      </div>
     </div>
   );
 };

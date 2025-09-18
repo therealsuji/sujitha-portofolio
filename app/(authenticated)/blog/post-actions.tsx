@@ -102,3 +102,27 @@ export const updatePostTitle = authClient
 
     return true;
   });
+
+export const togglePostPublished = authClient
+  .schema(z.object({ id: z.string() }))
+  .action(async ({ parsedInput, ctx }) => {
+    const { db } = ctx;
+    const { id } = parsedInput;
+
+    const existingPost = await db.query.posts.findFirst({
+      where: eq(posts.id, id),
+    });
+
+    if (!existingPost) {
+      throw new Error("Post not found");
+    }
+
+    await db
+      .update(posts)
+      .set({
+        published: !existingPost.published,
+      })
+      .where(eq(posts.id, id));
+
+    return !existingPost.published;
+  });

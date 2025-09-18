@@ -1,9 +1,8 @@
 import React from "react";
 import { listPosts } from "./post-actions";
-import { Post } from "@/lib/schema";
 import Link from "next/link";
-import { EyeIcon, PenIcon } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import PostCard from "./PostCard";
 
 const PostList = async () => {
   const posts = await listPosts(undefined);
@@ -13,13 +12,14 @@ const PostList = async () => {
   }
 
   return (
-    <div className="px-4 py-4">
-      <div className="flex w-full justify-end">
+    <div className="p-6">
+      <div className="flex w-full justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Blog Posts</h1>
         <Link href="/blog/new">
-          <Button>New</Button>
+          <Button>New Post</Button>
         </Link>
       </div>
-      <div className="grid grid-cols-5 px-5 py-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {posts.data.map((post) => (
           <PostCard key={post.id} {...post} />
         ))}
@@ -28,20 +28,5 @@ const PostList = async () => {
   );
 };
 
-const PostCard = (post: Post) => {
-  return (
-    <div className="h-40 bg-blue-950 rounded-md flex flex-col justify-between">
-      <h1 className="py-2 px-4">{post.title}</h1>
-      <div className="flex justify-end px-4 pb-4 gap-3">
-        <Link href={`/blog/${post.id}`}>
-          <PenIcon className="h-6 w-6" />
-        </Link>
-        <Link href={`/blog/preview/${post.id}`}>
-          <EyeIcon className="h-6 w-6" />
-        </Link>
-      </div>
-    </div>
-  );
-};
 
 export default PostList;

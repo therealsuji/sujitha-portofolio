@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 const techStack = {
   frontend: [
     { name: "REACT/NEXT", color: "bg-primary" },
+    { name: "REACT NATIVE", color: "bg-secondary" },
     { name: "TAILWIND CSS", color: "bg-brutal-green" },
     { name: "ANGULAR", color: "bg-accent" },
     { name: "FLUTTER", color: "bg-primary" },

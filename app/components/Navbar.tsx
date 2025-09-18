@@ -56,7 +56,7 @@ const Navbar = () => {
               ))}
 
               <a
-                href="/mycv.pdf"
+                href="/SujithaWijewanthaCV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-sm bg-brutal-yellow text-black px-4 py-2 brutal-border brutal-box-shadow-sm hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform uppercase tracking-wider"
@@ -105,7 +105,7 @@ const Navbar = () => {
           ))}
 
           <a
-            href="/mycv.pdf"
+            href="/SujithaWijewanthaCV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}

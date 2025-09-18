@@ -39,7 +39,7 @@ const AboutMe = () => {
       <div className="space-y-6">
         <div className="text-lg sm:text-xl md:text-3xl font-mono uppercase tracking-wider">
           <span className="inline-block bg-brutal-yellow text-black px-2 sm:px-3 py-1 brutal-border brutal-box-shadow-sm">
-            HELLO, WORLD!
+            {"<HELLO, THERE :P/>"}
           </span>
         </div>
 
@@ -83,7 +83,7 @@ const AboutMe = () => {
 
       <button
         onClick={scrollToAboutMe}
-        className="absolute md:bottom-10 -bottom-1/2 left-1/2 md:left-[55%] transform -translate-x-1/2 group"
+        className="absolute md:bottom-10 -bottom-1/2 left-1/2 md:left-[60%] transform -translate-x-1/2 group"
         aria-label="Scroll to about section"
       >
         <div className="bg-primary text-primary-foreground px-4 sm:px-6 py-2 sm:py-3 brutal-border brutal-box-shadow font-mono text-sm sm:text-base uppercase tracking-wider hover:translate-y-1 hover:shadow-sm transition-all">

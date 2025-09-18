@@ -105,7 +105,7 @@ const Index = () => {
           className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
         >
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow mt-2">
               ABOUT<span className="text-primary">/</span>ME
             </h2>
 
@@ -170,7 +170,7 @@ const Index = () => {
         {/* Tech Skills Section */}
         <section className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20 bg-muted">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow mt-2">
               TECH<span className="text-primary">/</span>ARSENAL
             </h2>
 
@@ -252,7 +252,7 @@ const Index = () => {
           className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
         >
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow mt-2">
               WORK<span className="text-primary">/</span>EXPERIENCE
             </h2>
 
@@ -305,13 +305,15 @@ const Index = () => {
           className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
         >
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow mt-2">
               COOL<span className="text-primary">/</span>STUFF
             </h2>
 
             {/* Featured Projects */}
             <div className="mb-16">
-              <h3 className="text-xl font-mono uppercase mb-8 text-primary">FEATURED PROJECTS</h3>
+              <h3 className="text-xl font-mono uppercase mb-8 text-primary">
+                FEATURED PROJECTS
+              </h3>
               <div className="grid gap-8">
                 {projects.map((project) => (
                   <ProjectCard key={project.id} project={project} />
@@ -321,7 +323,9 @@ const Index = () => {
 
             {/* Blog Posts */}
             <div>
-              <h3 className="text-xl font-mono uppercase mb-8 text-primary">LATEST POSTS</h3>
+              <h3 className="text-xl font-mono uppercase mb-8 text-primary">
+                LATEST POSTS
+              </h3>
               <Suspense
                 fallback={
                   <div className="flex justify-center py-12">
@@ -346,7 +350,9 @@ const Index = () => {
             <div className="text-center sm:text-left font-mono">
               <p className="text-xs sm:text-sm uppercase">
                 DEVELOPED BY{" "}
-                <span className="font-bold text-primary">SUJITHA WIJEWANTHA</span>
+                <span className="font-bold text-primary">
+                  SUJITHA WIJEWANTHA
+                </span>
               </p>
               <p className="text-xs mt-2 opacity-60">
                 © {new Date().getFullYear()} ALL RIGHTS RESERVED

@@ -38,7 +38,7 @@ const AboutMe = () => {
 
         <div className="space-y-3">
           <div className="inline-block">
-            <p className="text-lg sm:text-xl md:text-2xl font-mono bg-secondary text-secondary-foreground px-3 sm:px-4 py-2 brutal-border brutal-box-shadow">
+            <p className="text-lg sm:text-xl md:text-2xl font-mono bg-neutral-dark text-background px-3 sm:px-4 py-2 brutal-border brutal-box-shadow">
               FULLSTACK ENGINEER
             </p>
           </div>
@@ -48,7 +48,7 @@ const AboutMe = () => {
               ROBUST
             </span>{" "}
             WEB EXPERIENCES WITH{" "}
-            <span className="bg-foreground text-background px-2">
+            <span className="bg-neutral-dark text-background px-2">
               MODERN
             </span>{" "}
             TECH

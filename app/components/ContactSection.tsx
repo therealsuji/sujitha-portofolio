@@ -37,7 +37,7 @@ const ContactSection = () => {
             </p>
             <p className="font-mono text-base sm:text-lg">
               NEED A{" "}
-              <span className="bg-primary text-background px-2">
+              <span className="bg-neutral-light text-foreground px-2">
                 TALENTED ENGINEER
               </span>
               ?

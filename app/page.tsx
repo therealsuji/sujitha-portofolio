@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 };
 
 const techStack = [
-  { name: "REACT/NEXT", color: "bg-primary" },
-  { name: "TYPESCRIPT", color: "bg-foreground" },
-  { name: "NODE/NEST", color: "bg-primary" },
-  { name: "TAILWIND", color: "bg-foreground" },
-  { name: "POSTGRESQL", color: "bg-primary" },
-  { name: "AWS/GCP", color: "bg-foreground" },
+  { name: "REACT/NEXT", color: "bg-primary", textColor: "text-primary-foreground" },
+  { name: "TYPESCRIPT", color: "bg-neutral-dark", textColor: "text-neutral-light" },
+  { name: "NODE/NEST", color: "bg-primary", textColor: "text-primary-foreground" },
+  { name: "TAILWIND", color: "bg-neutral-dark", textColor: "text-neutral-light" },
+  { name: "POSTGRESQL", color: "bg-primary", textColor: "text-primary-foreground" },
+  { name: "AWS/GCP", color: "bg-neutral-dark", textColor: "text-neutral-light" },
 ];
 
 const experience = [
@@ -107,7 +107,7 @@ const Index = () => {
                     {techStack.map((tech) => (
                       <div
                         key={tech.name}
-                        className={`${tech.color} ${tech.color === 'bg-foreground' ? 'text-background' : 'text-primary-foreground'} px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
+                        className={`${tech.color} ${tech.textColor} px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
                       >
                         {tech.name}
                       </div>

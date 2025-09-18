@@ -36,7 +36,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="group">
               <div className="font-display text-2xl font-bold">
-                <span className="bg-primary text-primary-foreground px-2 py-1 brutal-border group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+                <span className="bg-primary text-primary-foreground px-2 py-1 brutal-border group-hover:bg-neutral-dark group-hover:text-background transition-colors">
                   SW
                 </span>
               </div>

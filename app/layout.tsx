@@ -3,6 +3,7 @@ import React from "react";
 import { FCC } from "../utils/types";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { Toaster } from "@/components/ui/Toast";
+import { PostHogProvider } from "../components/PostHogProvider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -31,15 +32,17 @@ const RootLayout: FCC = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

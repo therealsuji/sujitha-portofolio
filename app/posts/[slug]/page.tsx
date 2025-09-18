@@ -1,11 +1,11 @@
 import React, { cache } from "react";
-import { cacheablePost } from "@/actions/post-actions";
+import { getPublishedPost } from "@/actions/post-actions";
 import PostPreview from "@/components/PostPreview";
 import { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 
-const cachedPost = cache(cacheablePost);
+const cachedPost = cache(getPublishedPost);
 
 export async function generateMetadata({
   params,
@@ -68,11 +68,6 @@ const ViewPost = async ({ params }: { params: { slug: string } }) => {
                   day: 'numeric'
                 })}
               </span>
-              {data.published && (
-                <span className="bg-brutal-green text-black px-3 py-1 brutal-border">
-                  PUBLISHED
-                </span>
-              )}
             </div>
           </header>
 

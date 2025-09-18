@@ -59,7 +59,7 @@ const Navbar = () => {
                 href="/mycv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-sm bg-brutal-yellow text-black px-4 py-2 brutal-border brutal-box-shadow-sm hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform uppercase tracking-wider"
+                className="font-mono text-sm bg-primary text-primary-foreground px-4 py-2 brutal-border brutal-box-shadow-sm hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform uppercase tracking-wider"
               >
                 RESUME
               </a>
@@ -111,7 +111,7 @@ const Navbar = () => {
             onClick={() => setIsOpen(false)}
             className="mt-4"
           >
-            <div className="bg-brutal-yellow text-black px-8 py-4 brutal-border brutal-box-shadow font-mono uppercase tracking-wider">
+            <div className="bg-primary text-primary-foreground px-8 py-4 brutal-border brutal-box-shadow font-mono uppercase tracking-wider">
               DOWNLOAD RESUME
             </div>
           </a>

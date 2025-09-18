@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 
 const techStack = [
   { name: "REACT/NEXT", color: "bg-primary" },
-  { name: "TYPESCRIPT", color: "bg-secondary" },
-  { name: "NODE/NEST", color: "bg-accent" },
-  { name: "TAILWIND", color: "bg-brutal-green" },
-  { name: "POSTGRESQL", color: "bg-brutal-purple" },
-  { name: "AWS/GCP", color: "bg-brutal-yellow" },
+  { name: "TYPESCRIPT", color: "bg-foreground" },
+  { name: "NODE/NEST", color: "bg-primary" },
+  { name: "TAILWIND", color: "bg-foreground" },
+  { name: "POSTGRESQL", color: "bg-primary" },
+  { name: "AWS/GCP", color: "bg-foreground" },
 ];
 
 const experience = [
@@ -107,7 +107,7 @@ const Index = () => {
                     {techStack.map((tech) => (
                       <div
                         key={tech.name}
-                        className={`${tech.color} text-black px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
+                        className={`${tech.color} ${tech.color === 'bg-foreground' ? 'text-background' : 'text-primary-foreground'} px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
                       >
                         {tech.name}
                       </div>
@@ -161,7 +161,7 @@ const Index = () => {
                         {job.role}
                       </p>
                     </div>
-                    <span className="font-mono text-xs sm:text-sm bg-brutal-yellow text-black px-2 sm:px-3 py-1 brutal-border mt-2 md:mt-0 self-start">
+                    <span className="font-mono text-xs sm:text-sm bg-primary text-primary-foreground px-2 sm:px-3 py-1 brutal-border mt-2 md:mt-0 self-start">
                       {job.period}
                     </span>
                   </div>

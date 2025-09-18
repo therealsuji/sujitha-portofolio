@@ -21,7 +21,7 @@ const AboutMe = () => {
     <div className="flex flex-col justify-center h-full relative">
       <div className="space-y-6">
         <div className="text-lg sm:text-xl md:text-3xl font-mono uppercase tracking-wider">
-          <span className="inline-block bg-brutal-yellow text-black px-2 sm:px-3 py-1 brutal-border brutal-box-shadow-sm">
+          <span className="inline-block bg-primary text-primary-foreground px-2 sm:px-3 py-1 brutal-border brutal-box-shadow-sm">
             HELLO, WORLD!
           </span>
         </div>
@@ -48,7 +48,7 @@ const AboutMe = () => {
               ROBUST
             </span>{" "}
             WEB EXPERIENCES WITH{" "}
-            <span className="bg-accent text-accent-foreground px-2">
+            <span className="bg-foreground text-background px-2">
               MODERN
             </span>{" "}
             TECH

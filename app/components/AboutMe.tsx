@@ -28,7 +28,7 @@ const AboutMe = () => {
 
         <h1
           className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display brutal-heading leading-tight ${
-            glitch ? "glitch-text" : "brutal-shadow"
+            glitch ? "glitch-text" : "brutal-shadow brutal-shadow-sm"
           }`}
         >
           SUJITHA

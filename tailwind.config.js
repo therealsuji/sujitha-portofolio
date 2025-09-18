@@ -51,10 +51,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        neutral: {
-          light: "hsl(var(--neutral-light))",
-          medium: "hsl(var(--neutral-medium))",
-          dark: "hsl(var(--neutral-dark))",
+        brutal: {
+          yellow: "hsl(var(--brutal-yellow))",
+          green: "hsl(var(--brutal-green))",
+          purple: "hsl(var(--brutal-purple))",
         },
       },
       fontFamily: {

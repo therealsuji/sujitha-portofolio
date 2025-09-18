@@ -38,7 +38,7 @@ const AboutMe = () => {
     <div className="flex flex-col justify-center h-full relative">
       <div className="space-y-6">
         <div className="text-lg sm:text-xl md:text-3xl font-mono uppercase tracking-wider">
-          <span className="inline-block bg-primary text-primary-foreground px-2 sm:px-3 py-1 brutal-border brutal-box-shadow-sm">
+          <span className="inline-block bg-brutal-yellow text-black px-2 sm:px-3 py-1 brutal-border brutal-box-shadow-sm">
             HELLO, WORLD!
           </span>
         </div>
@@ -55,7 +55,7 @@ const AboutMe = () => {
 
         <div className="space-y-3">
           <div className="inline-block">
-            <p className="text-lg sm:text-xl md:text-2xl font-mono bg-neutral-dark text-background px-3 sm:px-4 py-2 brutal-border brutal-box-shadow">
+            <p className="text-lg sm:text-xl md:text-2xl font-mono bg-secondary text-secondary-foreground px-3 sm:px-4 py-2 brutal-border brutal-box-shadow">
               FULLSTACK ENGINEER
             </p>
           </div>
@@ -71,7 +71,7 @@ const AboutMe = () => {
                   ROBUST
                 </span>{" "}
                 WEB EXPERIENCES WITH{" "}
-                <span className="bg-neutral-dark text-background px-2">
+                <span className="bg-accent text-accent-foreground px-2">
                   MODERN
                 </span>{" "}
                 TECH

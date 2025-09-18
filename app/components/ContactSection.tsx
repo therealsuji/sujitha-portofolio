@@ -37,14 +37,14 @@ const ContactSection = () => {
             </p>
             <p className="font-mono text-base sm:text-lg">
               NEED A{" "}
-              <span className="bg-neutral-light text-foreground px-2">
+              <span className="bg-accent text-black px-2">
                 TALENTED ENGINEER
               </span>
               ?
             </p>
             <p className="font-mono text-base sm:text-lg mt-4">
               MY INBOX IS{" "}
-              <span className="bg-primary text-background px-2">
+              <span className="bg-brutal-green text-black px-2">
                 ALWAYS OPEN
               </span>
             </p>
@@ -87,7 +87,7 @@ const ContactSection = () => {
               rel="noopener noreferrer"
               className="mt-2 sm:mt-4"
             >
-              <div className="bg-primary text-primary-foreground px-4 sm:px-6 py-2 sm:py-3 brutal-border brutal-box-shadow font-mono text-sm sm:text-base uppercase tracking-wider hover:translate-x-[-3px] hover:translate-y-[-3px] transition-all">
+              <div className="bg-brutal-yellow text-black px-4 sm:px-6 py-2 sm:py-3 brutal-border brutal-box-shadow font-mono text-sm sm:text-base uppercase tracking-wider hover:translate-x-[-3px] hover:translate-y-[-3px] transition-all">
                 DOWNLOAD RESUME ↓
               </div>
             </a>

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import { Metadata } from "next";
 import PostList from "./PostList";
 import ContactSection from "./components/ContactSection";
+import ColorSchemeToggle from "./components/ColorSchemeToggle";
 
 export const metadata: Metadata = {
   title: "Sujitha Wijewantha | Fullstack Engineer",
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
 };
 
 const techStack = [
-  { name: "REACT/NEXT", color: "bg-primary", textColor: "text-primary-foreground" },
-  { name: "TYPESCRIPT", color: "bg-neutral-dark", textColor: "text-neutral-light" },
-  { name: "NODE/NEST", color: "bg-primary", textColor: "text-primary-foreground" },
-  { name: "TAILWIND", color: "bg-neutral-dark", textColor: "text-neutral-light" },
-  { name: "POSTGRESQL", color: "bg-primary", textColor: "text-primary-foreground" },
-  { name: "AWS/GCP", color: "bg-neutral-dark", textColor: "text-neutral-light" },
+  { name: "REACT/NEXT", color: "bg-primary" },
+  { name: "TYPESCRIPT", color: "bg-secondary" },
+  { name: "NODE/NEST", color: "bg-accent" },
+  { name: "TAILWIND", color: "bg-brutal-green" },
+  { name: "POSTGRESQL", color: "bg-brutal-purple" },
+  { name: "AWS/GCP", color: "bg-brutal-yellow" },
 ];
 
 const experience = [
@@ -107,7 +108,7 @@ const Index = () => {
                     {techStack.map((tech) => (
                       <div
                         key={tech.name}
-                        className={`${tech.color} ${tech.textColor} px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
+                        className={`${tech.color} text-black px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
                       >
                         {tech.name}
                       </div>
@@ -161,7 +162,7 @@ const Index = () => {
                         {job.role}
                       </p>
                     </div>
-                    <span className="font-mono text-xs sm:text-sm bg-primary text-primary-foreground px-2 sm:px-3 py-1 brutal-border mt-2 md:mt-0 self-start">
+                    <span className="font-mono text-xs sm:text-sm bg-brutal-yellow text-black px-2 sm:px-3 py-1 brutal-border mt-2 md:mt-0 self-start">
                       {job.period}
                     </span>
                   </div>
@@ -212,14 +213,24 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="border-t-4 border-foreground py-6 sm:py-8 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto text-center font-mono">
-          <p className="text-xs sm:text-sm uppercase">
-            DEVELOPED BY{" "}
-            <span className="font-bold text-primary">SUJITHA WIJEWANTHA</span>
-          </p>
-          <p className="text-xs mt-2 opacity-60">
-            © {new Date().getFullYear()} ALL RIGHTS RESERVED
-          </p>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="text-center sm:text-left font-mono">
+              <p className="text-xs sm:text-sm uppercase">
+                DEVELOPED BY{" "}
+                <span className="font-bold text-primary">SUJITHA WIJEWANTHA</span>
+              </p>
+              <p className="text-xs mt-2 opacity-60">
+                © {new Date().getFullYear()} ALL RIGHTS RESERVED
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="font-mono text-xs uppercase opacity-60">
+                COLOR MODE:
+              </span>
+              <ColorSchemeToggle />
+            </div>
+          </div>
         </div>
       </footer>
     </>

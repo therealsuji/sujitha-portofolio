@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import PostList from "./PostList";
 import ContactSection from "./components/ContactSection";
 import ColorSchemeToggle from "./components/ColorSchemeToggle";
+import StashSection from "./components/StashSection";
 
 export const metadata: Metadata = {
   title: "Sujitha Wijewantha | Fullstack Engineer",
@@ -14,14 +15,36 @@ export const metadata: Metadata = {
     "Fullstack engineer specializing in building robust web experiences with modern tech",
 };
 
-const techStack = [
-  { name: "REACT/NEXT", color: "bg-primary" },
-  { name: "TYPESCRIPT", color: "bg-secondary" },
-  { name: "NODE/NEST", color: "bg-accent" },
-  { name: "TAILWIND", color: "bg-brutal-green" },
-  { name: "POSTGRESQL", color: "bg-brutal-purple" },
-  { name: "AWS/GCP", color: "bg-brutal-yellow" },
-];
+const techStack = {
+  frontend: [
+    { name: "REACT/NEXT", color: "bg-primary" },
+    { name: "TAILWIND CSS", color: "bg-brutal-green" },
+    { name: "ANGULAR", color: "bg-accent" },
+    { name: "FLUTTER", color: "bg-primary" },
+    { name: "REDUX/ZUSTAND", color: "bg-brutal-purple" },
+  ],
+  backend: [
+    { name: "NODE.JS", color: "bg-brutal-green" },
+    { name: "NESTJS", color: "bg-accent" },
+    { name: "EXPRESS", color: "bg-secondary" },
+    { name: "TRPC", color: "bg-brutal-purple" },
+    { name: "PRISMA/DRIZZLE", color: "bg-brutal-yellow" },
+  ],
+  database: [
+    { name: "POSTGRESQL", color: "bg-secondary" },
+    { name: "MONGODB", color: "bg-brutal-green" },
+    { name: "REDIS", color: "bg-accent" },
+    { name: "MYSQL", color: "bg-primary" },
+    { name: "FIREBASE", color: "bg-brutal-yellow" },
+  ],
+  cloud: [
+    { name: "AWS", color: "bg-brutal-yellow" },
+    { name: "GCP", color: "bg-secondary" },
+    { name: "VERCEL", color: "bg-primary" },
+    { name: "RAILWAY", color: "bg-brutal-purple" },
+    { name: "DOCKER", color: "bg-accent" },
+  ],
+};
 
 const experience = [
   {
@@ -103,10 +126,17 @@ const Index = () => {
 
                 <div className="space-y-4">
                   <h3 className="text-xl sm:text-2xl font-mono uppercase brutal-shadow-sm">
-                    TECH<span className="text-primary">/</span>STACK
+                    QUICK<span className="text-primary">/</span>STACK
                   </h3>
                   <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                    {techStack.map((tech) => (
+                    {[
+                      { name: "REACT/NEXT", color: "bg-primary" },
+                      { name: "TYPESCRIPT", color: "bg-secondary" },
+                      { name: "NODE/NEST", color: "bg-accent" },
+                      { name: "POSTGRESQL", color: "bg-brutal-purple" },
+                      { name: "AWS/GCP", color: "bg-brutal-yellow" },
+                      { name: "TAILWIND", color: "bg-brutal-green" },
+                    ].map((tech) => (
                       <div
                         key={tech.name}
                         className={`${tech.color} text-black px-2 sm:px-4 py-2 brutal-border brutal-box-shadow-sm font-mono text-xs sm:text-sm font-bold text-center hover:translate-x-1 hover:translate-y-1 transition-transform cursor-pointer`}
@@ -135,10 +165,89 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Tech Skills Section */}
+        <section className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20 bg-muted">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow">
+              TECH<span className="text-primary">/</span>ARSENAL
+            </h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Frontend */}
+              <div className="brutal-card p-4 sm:p-6 bg-background">
+                <h3 className="text-xl font-mono uppercase mb-4 text-primary">
+                  FRONTEND
+                </h3>
+                <div className="space-y-2">
+                  {techStack.frontend.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className={`${tech.color} text-black px-3 py-2 brutal-border font-mono text-xs font-bold hover:translate-x-1 transition-transform`}
+                    >
+                      {tech.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Backend */}
+              <div className="brutal-card p-4 sm:p-6 bg-background">
+                <h3 className="text-xl font-mono uppercase mb-4 text-secondary">
+                  BACKEND
+                </h3>
+                <div className="space-y-2">
+                  {techStack.backend.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className={`${tech.color} text-black px-3 py-2 brutal-border font-mono text-xs font-bold hover:translate-x-1 transition-transform`}
+                    >
+                      {tech.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Database */}
+              <div className="brutal-card p-4 sm:p-6 bg-background">
+                <h3 className="text-xl font-mono uppercase mb-4 text-accent">
+                  DATABASE
+                </h3>
+                <div className="space-y-2">
+                  {techStack.database.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className={`${tech.color} text-black px-3 py-2 brutal-border font-mono text-xs font-bold hover:translate-x-1 transition-transform`}
+                    >
+                      {tech.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Cloud & DevOps */}
+              <div className="brutal-card p-4 sm:p-6 bg-background">
+                <h3 className="text-xl font-mono uppercase mb-4 text-brutal-purple">
+                  CLOUD/DEVOPS
+                </h3>
+                <div className="space-y-2">
+                  {techStack.cloud.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className={`${tech.color} text-black px-3 py-2 brutal-border font-mono text-xs font-bold hover:translate-x-1 transition-transform`}
+                    >
+                      {tech.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Experience Section */}
         <section
           id="experience"
-          className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20 bg-muted"
+          className="px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20"
         >
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-display brutal-heading mb-8 sm:mb-12 brutal-shadow">
@@ -185,6 +294,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        <StashSection />
 
         {/* Projects/Blog Section */}
         <section

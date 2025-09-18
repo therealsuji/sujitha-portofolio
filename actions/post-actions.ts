@@ -7,7 +7,14 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 export const listPosts = baseClient.action(async ({ ctx }) => {
-  const existingPosts = await db.query.posts.findMany();
+  const existingPosts = await db
+    .select({
+      title: posts.title,
+      excerpt: posts.excerpt,
+      slug: posts.slug,
+      createdAt: posts.createdAt,
+    })
+    .from(posts);
   return existingPosts;
 });
 

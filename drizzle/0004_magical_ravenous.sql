@@ -1,0 +1,1 @@
+ALTER TABLE "sujitha_posts" ADD COLUMN "excerpt" text;

@@ -2,7 +2,7 @@
 
 import { authClient } from "@/lib/safe-action";
 import { posts } from "@/lib/schema";
-import { createSlug } from "@/utils/helper";
+import { createSlug, createExcerpt } from "@/utils/helper";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
@@ -53,6 +53,7 @@ export const updatePostContent = authClient
       .update(posts)
       .set({
         content,
+        excerpt: createExcerpt(content, 150),
       })
       .where(eq(posts.id, id));
 

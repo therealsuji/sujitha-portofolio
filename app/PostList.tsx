@@ -18,7 +18,7 @@ const PostList = async () => {
   return (
     <div className="grid gap-6">
       {posts.data?.map((post, index) => (
-        <Link href={`/posts/${post.slug}`} key={post.id} className="group">
+        <Link href={`/posts/${post.slug}`} key={post.slug} className="group">
           <article className="brutal-card p-6 bg-background hover:translate-x-2 hover:translate-y-2 transition-transform cursor-pointer">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
@@ -33,9 +33,9 @@ const PostList = async () => {
                 <h3 className="text-2xl font-display font-bold uppercase mb-2 group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>
-                {post.content && (
+                {post.excerpt && (
                   <p className="font-mono text-sm opacity-80 line-clamp-2">
-                    {post.content.substring(0, 150)}...
+                    {post.excerpt.substring(0, 150)}...
                   </p>
                 )}
               </div>

@@ -27,6 +27,7 @@ export const posts = pgTable("posts", {
   thumbnail: text("thumbnail"),
   published: boolean("published").default(false),
   content: text("content").notNull(),
+  excerpt: text("excerpt"),
   slug: text("slug").notNull().default(sql`gen_random_uuid()`),
 });
 

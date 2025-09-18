@@ -123,7 +123,7 @@ const Navbar = () => {
       </div>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16"></div>
+      <div className="h-14 sm:h-16"></div>
     </>
   );
 };

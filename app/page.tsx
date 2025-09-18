@@ -25,18 +25,6 @@ const techStack = [
 
 const experience = [
   {
-    id: "current",
-    company: "ENACTOR",
-    role: "SOFTWARE ENGINEER",
-    period: "2021 - CURRENT",
-    description: [
-      "MIGRATING LEGACY POS TO REACT-BASED SYSTEM",
-      "BUILDING DATA PREPROCESSORS FOR PLATFORM",
-      "STREAMLINING DESIGN SYSTEM ARCHITECTURE",
-      "AUTOMATING TESTING FOR REACT POS",
-    ],
-  },
-  {
     id: "freelance",
     company: "FREELANCE",
     role: "FULLSTACK DEV",
@@ -46,6 +34,19 @@ const experience = [
       "BACKOFFICE APPLICATIONS WITH TRPC",
       "AWS EBS DEPLOYMENT & CI/CD PIPELINES",
       "RAILWAY HOSTING & INFRASTRUCTURE",
+    ],
+  },
+  {
+    id: "enactor",
+    company: "ENACTOR",
+    role: "SOFTWARE ENGINEER",
+    period: "2021 - 2024",
+    description: [
+      "REFINED AND ENHANCED THE INITIAL VERSION OF THE SELF-CHECKOUT REACT-BASED POS, OPTIMISING USER EXPERIENCE AND FUNCTIONALITY",
+      "MIGRATING LEGACY POS TO REACT-BASED SYSTEM",
+      "BUILDING DATA PREPROCESSORS FOR PLATFORM",
+      "STREAMLINING DESIGN SYSTEM ARCHITECTURE",
+      "AUTOMATING TESTING FOR REACT POS",
     ],
   },
   {

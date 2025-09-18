@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,30 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // If we're not on the home page, navigate there first
+    if (pathname !== '/') {
+      router.push(href);
+      return;
+    }
+
+    // Extract the hash from the href
+    const targetId = href.replace('/#', '');
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Close mobile menu if open
+    setIsOpen(false);
+  };
 
   const navItems = [
     { href: "/#about-me", label: "ABOUT" },
@@ -45,14 +71,15 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
-                  className="font-mono text-sm uppercase tracking-wider hover:text-primary transition-colors relative group"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="font-mono text-sm uppercase tracking-wider hover:text-primary transition-colors relative group cursor-pointer"
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-300"></span>
-                </Link>
+                </a>
               ))}
 
               <a
@@ -93,15 +120,15 @@ const Navbar = () => {
       }`}>
         <div className="h-full flex flex-col justify-center items-center gap-8 p-8">
           {navItems.map((item, index) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="font-display text-4xl font-bold uppercase brutal-shadow hover:text-primary transition-colors"
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="font-display text-4xl font-bold uppercase brutal-shadow hover:text-primary transition-colors cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {item.label}
-            </Link>
+            </a>
           ))}
 
           <a

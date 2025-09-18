@@ -212,6 +212,24 @@ html {
   animation: glitch 0.3s infinite;
 }
 
+/* Typing effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  border-right: 3px solid hsl(var(--primary));
+  white-space: nowrap;
+  animation: typing 3.5s steps(50, end), blink 2s step-end infinite;
+}
+
 /* Noise background */
 .noise-bg::before {
   content: "";

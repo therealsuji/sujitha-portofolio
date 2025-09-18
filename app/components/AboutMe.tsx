@@ -8,13 +8,30 @@ const AboutMe = () => {
   };
 
   const [glitch, setGlitch] = useState(false);
+  const [showTyping, setShowTyping] = useState(false);
+  const [showHighlights, setShowHighlights] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setGlitch(true);
       setTimeout(() => setGlitch(false), 200);
     }, 5000);
-    return () => clearInterval(interval);
+
+    // Start typing effect after a delay
+    const typingTimer = setTimeout(() => {
+      setShowTyping(true);
+    }, 1500);
+
+    // Show highlights after typing completes
+    const highlightsTimer = setTimeout(() => {
+      setShowHighlights(true);
+    }, 6000); // 1.5s delay + 3.5s typing + 1s buffer
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(typingTimer);
+      clearTimeout(highlightsTimer);
+    };
   }, []);
 
   return (
@@ -42,17 +59,25 @@ const AboutMe = () => {
               FULLSTACK ENGINEER
             </p>
           </div>
-          <p className="text-base sm:text-lg md:text-xl font-mono max-w-2xl leading-relaxed">
-            I BUILD{" "}
-            <span className="bg-primary text-primary-foreground px-2">
-              ROBUST
-            </span>{" "}
-            WEB EXPERIENCES WITH{" "}
-            <span className="bg-neutral-dark text-background px-2">
-              MODERN
-            </span>{" "}
-            TECH
-          </p>
+          <div className="text-base sm:text-lg md:text-xl font-mono max-w-2xl leading-relaxed">
+            {showTyping && !showHighlights ? (
+              <div className="typing-effect">
+                I BUILD ROBUST WEB EXPERIENCES WITH MODERN TECH
+              </div>
+            ) : (
+              <p>
+                I BUILD{" "}
+                <span className="bg-primary text-primary-foreground px-2">
+                  ROBUST
+                </span>{" "}
+                WEB EXPERIENCES WITH{" "}
+                <span className="bg-neutral-dark text-background px-2">
+                  MODERN
+                </span>{" "}
+                TECH
+              </p>
+            )}
+          </div>
         </div>
       </div>
 

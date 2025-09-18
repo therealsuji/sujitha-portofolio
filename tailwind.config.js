@@ -51,6 +51,15 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brutal: {
+          yellow: "hsl(var(--brutal-yellow))",
+          green: "hsl(var(--brutal-green))",
+          purple: "hsl(var(--brutal-purple))",
+        },
+      },
+      fontFamily: {
+        'mono': ['"JetBrains Mono"', '"Space Mono"', 'monospace'],
+        'display': ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

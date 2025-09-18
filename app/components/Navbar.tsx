@@ -1,57 +1,130 @@
 "use client";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/NavigationMenu";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { usePathname } from "next/navigation";
 
-type NavigationItemProps = {
-  href: string;
-  label: string;
-  active?: boolean;
-};
-
-const NavigationItem = ({ href, label, active }: NavigationItemProps) => (
-  <NavigationMenuItem>
-    <Link href={href} legacyBehavior passHref>
-      <NavigationMenuLink
-        active={active}
-        className={navigationMenuTriggerStyle}
-      >
-        {label}
-      </NavigationMenuLink>
-    </Link>
-  </NavigationMenuItem>
-);
-
 const Navbar = () => {
-  const path = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navItems = [
-    { href: "#about-me", label: "About Me" },
-    { href: "#contact-me", label: "Contact Me" },
-    { href: "#cool-stuff", label: "Cool Stuff" },
-    { href: "/mycv.pdf", label: "Resume" },
+    { href: "/#about-me", label: "ABOUT" },
+    { href: "/#experience", label: "WORK" },
+    { href: "/#cool-stuff", label: "PROJECTS" },
+    { href: "/#contact-me", label: "CONTACT" },
   ];
 
   return (
-    <NavigationMenu className="ml-auto mt-4 mr-4">
-      <NavigationMenuList>
-        {navItems.map((item) => (
-          <NavigationItem
-            key={item.href}
-            {...item}
-            active={path === item.href}
-          />
-        ))}
-        <ThemeToggle />
-      </NavigationMenuList>
-    </NavigationMenu>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-background border-b-4 border-foreground" : ""
+      }`}>
+        <div className="px-6 md:px-12 lg:px-20 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="group">
+              <div className="font-display text-2xl font-bold">
+                <span className="bg-primary text-primary-foreground px-2 py-1 brutal-border group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+                  SW
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="font-mono text-sm uppercase tracking-wider hover:text-primary transition-colors relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ))}
+
+              <a
+                href="/mycv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-sm bg-brutal-yellow text-black px-4 py-2 brutal-border brutal-box-shadow-sm hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform uppercase tracking-wider"
+              >
+                RESUME
+              </a>
+
+              <ThemeToggle />
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1 group"
+              aria-label="Toggle menu"
+            >
+              <span className={`block w-6 h-1 bg-foreground transition-all ${
+                isOpen ? "rotate-45 translate-y-2" : ""
+              }`}></span>
+              <span className={`block w-6 h-1 bg-foreground transition-all ${
+                isOpen ? "opacity-0" : ""
+              }`}></span>
+              <span className={`block w-6 h-1 bg-foreground transition-all ${
+                isOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div className={`fixed inset-0 z-40 bg-background transition-transform duration-300 ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      }`}>
+        <div className="h-full flex flex-col justify-center items-center gap-8 p-8">
+          {navItems.map((item, index) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="font-display text-4xl font-bold uppercase brutal-shadow hover:text-primary transition-colors"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <a
+            href="/mycv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="mt-4"
+          >
+            <div className="bg-brutal-yellow text-black px-8 py-4 brutal-border brutal-box-shadow font-mono uppercase tracking-wider">
+              DOWNLOAD RESUME
+            </div>
+          </a>
+
+          <div className="mt-4">
+            <ThemeToggle />
+          </div>
+        </div>
+      </div>
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-16"></div>
+    </>
   );
 };
 

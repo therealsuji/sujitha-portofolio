@@ -307,15 +307,65 @@ const Index = () => {
               COOL<span className="text-primary">/</span>STUFF
             </h2>
 
-            <Suspense
-              fallback={
-                <div className="flex justify-center py-12">
-                  <div className="font-mono text-xl">LOADING...</div>
+            {/* Featured Projects */}
+            <div className="mb-16">
+              <h3 className="text-xl font-mono uppercase mb-8 text-primary">FEATURED PROJECTS</h3>
+              <div className="grid gap-8">
+                {/* RN Upgrader MCP */}
+                <div className="brutal-card p-6 bg-background hover:translate-x-2 hover:translate-y-2 transition-transform max-w-2xl">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h4 className="text-xl font-mono uppercase mb-2">
+                        RN UPGRADER MCP
+                      </h4>
+                      <p className="font-mono text-sm opacity-80 mb-4">
+                        MCP SERVER FOR REACT NATIVE UPGRADES
+                      </p>
+                    </div>
+                    <span className="bg-brutal-purple text-black px-2 py-1 brutal-border text-xs font-mono">
+                      TYPESCRIPT
+                    </span>
+                  </div>
+
+                  <p className="font-mono text-sm mb-4">
+                    Model Context Protocol server that helps with React Native version upgrades by providing structured upgrade guidance and compatibility checks.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="font-mono text-xs bg-muted text-foreground px-2 py-1 brutal-border">MCP</span>
+                    <span className="font-mono text-xs bg-muted text-foreground px-2 py-1 brutal-border">REACT NATIVE</span>
+                    <span className="font-mono text-xs bg-muted text-foreground px-2 py-1 brutal-border">CLI TOOL</span>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <a
+                      href="https://github.com/therealsuji/rn-upgrader-mcp"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
+                    >
+                      <div className="bg-secondary text-secondary-foreground px-4 py-2 brutal-border font-mono text-sm uppercase hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform">
+                        GITHUB →
+                      </div>
+                    </a>
+                  </div>
                 </div>
-              }
-            >
-              <PostList />
-            </Suspense>
+              </div>
+            </div>
+
+            {/* Blog Posts */}
+            <div>
+              <h3 className="text-xl font-mono uppercase mb-8 text-primary">LATEST POSTS</h3>
+              <Suspense
+                fallback={
+                  <div className="flex justify-center py-12">
+                    <div className="font-mono text-xl">LOADING...</div>
+                  </div>
+                }
+              >
+                <PostList />
+              </Suspense>
+            </div>
           </div>
         </section>
 

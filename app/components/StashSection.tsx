@@ -8,7 +8,7 @@ const StashSection = () => {
           MY<span className="text-primary">/</span>STASH
         </h2>
         <p className="font-mono text-lg mb-8">
-          USEFUL BITS I <span className="bg-primary text-primary-foreground px-2">COPY/PASTE</span> A LOT
+          SOME <span className="bg-primary text-primary-foreground px-2">NEAT</span> STUFF
         </p>
 
         <div className="grid gap-6">

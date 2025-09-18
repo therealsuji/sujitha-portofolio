@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 const PostCard = (post: Post) => {
   const router = useRouter();
-  const { execute: executeToggle, isPending } = useAction(togglePostPublished, {
+  const { execute: executeToggle, isExecuting: isPending } = useAction(togglePostPublished, {
     onSuccess: (data) => {
       toast.success(data.data ? "Post published" : "Post unpublished");
       router.refresh();

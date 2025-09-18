@@ -1,5 +1,5 @@
 @import "./hamburger.css";
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -88,14 +88,14 @@
 
 body {
   @apply bg-background text-foreground;
-  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-family: "JetBrains Mono", "Space Mono", monospace;
   line-height: 1.6;
   letter-spacing: -0.02em;
 }
 
 /* Brutalist Typography Classes */
 .brutal-heading {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.05em;
@@ -188,19 +188,19 @@ html {
 @keyframes glitch {
   0% {
     text-shadow: 2px 2px 0px hsl(var(--primary)),
-                 -2px -2px 0px hsl(var(--secondary));
+      -2px -2px 0px hsl(var(--secondary));
   }
   25% {
     text-shadow: -2px 2px 0px hsl(var(--primary)),
-                 2px -2px 0px hsl(var(--secondary));
+      2px -2px 0px hsl(var(--secondary));
   }
   50% {
     text-shadow: 2px -2px 0px hsl(var(--primary)),
-                 -2px 2px 0px hsl(var(--secondary));
+      -2px 2px 0px hsl(var(--secondary));
   }
   100% {
     text-shadow: 2px 2px 0px hsl(var(--primary)),
-                 -2px -2px 0px hsl(var(--secondary));
+      -2px -2px 0px hsl(var(--secondary));
   }
 }
 
@@ -214,20 +214,91 @@ html {
 
 /* Typing effect */
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+@keyframes blink-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cursor-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink-dot {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes show-and-blink {
+  0% {
+    opacity: 0;
+  }
+  99.9% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .typing-effect {
   overflow: hidden;
-  border-right: 3px solid hsl(var(--primary));
   white-space: nowrap;
-  animation: typing 3.5s steps(50, end), blink 2s step-end infinite;
+  animation: typing 3.5s steps(50, end);
+  position: relative;
+}
+
+.typing-effect::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: hsl(var(--primary));
+  opacity: 1;
+  animation: blink-cursor 1s infinite 3.5s, cursor-fade-out 0.1s ease-out 6s forwards;
+}
+
+.typing-effect::after {
+  content: "■";
+  color: hsl(var(--primary));
+  position: absolute;
+  right: 0px;
+  bottom: 2px;
+  font-size: 0.8em;
+  line-height: 1;
+  opacity: 0;
+  transform: scale(0.4);
+  animation: show-and-blink 6.5s forwards, blink-dot 1s infinite 6.5s;
 }
 
 /* Noise background */

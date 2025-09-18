@@ -25,7 +25,7 @@ const AboutMe = () => {
     // Show highlights after typing completes
     const highlightsTimer = setTimeout(() => {
       setShowHighlights(true);
-    }, 6000); // 1.5s delay + 3.5s typing + 1s buffer
+    }, 9000); // 1.5s delay + 3.5s typing + 4s buffer
 
     return () => {
       clearInterval(interval);
@@ -59,9 +59,9 @@ const AboutMe = () => {
               FULLSTACK ENGINEER
             </p>
           </div>
-          <div className="text-base sm:text-lg md:text-xl font-mono max-w-2xl leading-relaxed">
+          <div className="text-base sm:text-lg md:text-xl font-mono max-w-2xl leading-relaxed flex w-fit">
             {showTyping && !showHighlights ? (
-              <div className="typing-effect">
+              <div className="typing-effect pr-2">
                 I BUILD ROBUST WEB EXPERIENCES WITH MODERN TECH
               </div>
             ) : (
